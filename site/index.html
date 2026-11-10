@@ -751,6 +751,129 @@ a { color: inherit; }
 .rsvp .eyebrow { color: var(--gold); }
 .rsvp .btn { margin-top: 14px; }
 .rsvp-who { margin-top: 12px; }
+
+.share {
+  margin: 34px auto 0;
+  max-width: 420px;
+  text-align: center;
+}
+.share .eyebrow { color: var(--gold); }
+.share-note {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.55;
+  color: rgba(244, 227, 196, .82);
+}
+.share-form { margin-top: 18px; }
+.share-label {
+  display: block;
+  font: 500 14px/1.3 var(--body);
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.share-name {
+  display: block;
+  width: 100%;
+  margin-top: 10px;
+  min-height: 48px;
+  padding: 0 20px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: rgba(244, 227, 196, .08);
+  color: var(--moon);
+  font: 500 16px/1 var(--body);
+  text-align: center;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+.share-name::placeholder { color: rgba(244, 227, 196, .45); }
+.share-name:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; }
+.share-add {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 16px;
+  min-height: 56px;
+  padding: 0 22px;
+  border: 1px dashed rgba(201, 154, 69, .75);
+  border-radius: 18px;
+  background: rgba(244, 227, 196, .06);
+  color: var(--moon);
+  font: 500 16px/1 var(--body);
+  letter-spacing: .04em;
+  transition: background .4s var(--ease), border-color .4s var(--ease);
+}
+.share-add:hover { background: rgba(244, 227, 196, .12); border-color: var(--gold); }
+.share-add:disabled { opacity: .55; cursor: not-allowed; }
+.share-add svg { width: 22px; height: 22px; flex: none; color: var(--gold); }
+.share-count {
+  margin-top: 12px;
+  font: 500 14px/1.3 var(--body);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+.share-thumbs {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+  gap: 10px;
+  margin-top: 14px;
+  padding: 0;
+  list-style: none;
+}
+.share-thumbs:empty { display: none; }
+.share-thumb {
+  position: relative;
+  aspect-ratio: 1;
+  border: 1px solid rgba(201, 154, 69, .55);
+  border-radius: 12px;
+  overflow: hidden;
+  background: rgba(10, 24, 44, .55);
+}
+.share-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.share-remove {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: 1px solid rgba(201, 154, 69, .7);
+  border-radius: 50%;
+  background: rgba(10, 24, 44, .78);
+  color: var(--moon);
+}
+.share-remove svg { width: 14px; height: 14px; }
+.share-hint {
+  margin-top: 10px;
+  font-size: 14px;
+  color: var(--coral);
+}
+.share .btn { margin-top: 16px; width: 100%; }
+.share .btn:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  transform: none;
+}
+.share-status {
+  margin-top: 12px;
+  min-height: 1.4em;
+  font-size: 15px;
+  color: rgba(244, 227, 196, .88);
+}
+.share-status.is-ok { color: #9fd6b8; }
+.share-status.is-err { color: var(--coral); }
+
 .footer .btn--night { margin-top: 30px; }
 
 .lanterns { position: fixed; inset: 0; z-index: 9; overflow: hidden; pointer-events: none; }
@@ -900,6 +1023,7 @@ a { color: inherit; }
   <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
   <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
   <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.9-8-10.7A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 2.8c0 5.8-8 10.7-8 10.7z" fill="currentColor"/></symbol>
+  <symbol id="i-camera" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 8.5h2.2l1.3-2h8l1.3 2H19.5A1.5 1.5 0 0 1 21 10v7.5a1.5 1.5 0 0 1-1.5 1.5h-15A1.5 1.5 0 0 1 3 17.5V10a1.5 1.5 0 0 1 1.5-1.5z"/><circle cx="12" cy="13.5" r="3.2"/></g></symbol>
   <symbol id="lantern" viewBox="0 0 70 105">
     <circle cx="35" cy="50" r="35" fill="url(#lantern-glow)"/>
     <path d="M22 28h26l5 40-9 11H26l-9-11z" fill="url(#lantern-body)" stroke="#C99A45" stroke-width="1"/>
@@ -1320,6 +1444,28 @@ a { color: inherit; }
       RSVP on WhatsApp
     </a>
     <p class="rsvp-who">+447804468515 (#NabbedByRisha)</p>
+  </div>
+
+  <div class="share rv" id="share">
+    <p class="eyebrow">Share Moments</p>
+    <p class="share-note">Choose your best 5 photos — the ones you want to keep — so these moments stay easy to look back on for the rest of the time.</p>
+    <form class="share-form" id="share-form" novalidate>
+      <label class="share-label" for="share-name">Your name</label>
+      <input class="share-name" id="share-name" name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Your name" enterkeyhint="done">
+      <input class="share-file" id="share-file" type="file" accept="image/*" multiple hidden>
+      <button class="share-add" id="share-add" type="button">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-camera"/></svg>
+        Add photos
+      </button>
+      <p class="share-count" id="share-count" aria-live="polite">0 / 5</p>
+      <ul class="share-thumbs" id="share-thumbs"></ul>
+      <p class="share-hint" id="share-hint" hidden></p>
+      <button class="btn btn--moon" id="share-send" type="submit" disabled>
+        <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-camera"/></svg>
+        Send photos
+      </button>
+      <p class="share-status" id="share-status" role="status" aria-live="polite"></p>
+    </form>
   </div>
 
   <button class="btn btn--night rv" id="lantern-btn" type="button">
@@ -2147,6 +2293,257 @@ a { color: inherit; }
       if (ripples.length > 6) ripples.shift();
       wake();
     }, { passive: true });
+  })();
+
+  /* ==================================================================
+     GUEST PHOTO UPLOAD → Google Apps Script → Drive
+     Paste the deployed web app /exec URL into DRIVE_UPLOAD_URL.
+     ================================================================== */
+  (function () {
+    var DRIVE_UPLOAD_URL = 'https://script.google.com/macros/s/AKfycbzqeDOSIoNV5Vm5j3Qa9QFcLq0NQj6_ahoytCTBkjnzArLRU1ha-VTISOGVdbIVpjBo/exec';
+    var MAX_PHOTOS = 5;
+    var MAX_EDGE = 1600;
+    var JPEG_QUALITY = 0.82;
+
+    var form = $('#share-form');
+    if (!form) return;
+
+    var nameInput = $('#share-name');
+    var fileInput = $('#share-file');
+    var addBtn = $('#share-add');
+    var countEl = $('#share-count');
+    var thumbsEl = $('#share-thumbs');
+    var hintEl = $('#share-hint');
+    var sendBtn = $('#share-send');
+    var statusEl = $('#share-status');
+    var selected = [];
+    var busy = false;
+
+    function setHint(msg) {
+      if (!msg) {
+        hintEl.hidden = true;
+        hintEl.textContent = '';
+        return;
+      }
+      hintEl.hidden = false;
+      hintEl.textContent = msg;
+    }
+
+    function setStatus(msg, kind) {
+      statusEl.textContent = msg || '';
+      statusEl.classList.remove('is-ok', 'is-err');
+      if (kind) statusEl.classList.add(kind);
+    }
+
+    function updateSend() {
+      var ready = !busy && nameInput.value.trim().length > 0 && selected.length > 0;
+      sendBtn.disabled = !ready;
+    }
+
+    function revokeAll() {
+      selected.forEach(function (item) {
+        if (item.url) URL.revokeObjectURL(item.url);
+      });
+    }
+
+    function renderThumbs() {
+      thumbsEl.innerHTML = '';
+      selected.forEach(function (item, index) {
+        var li = document.createElement('li');
+        li.className = 'share-thumb';
+
+        var img = document.createElement('img');
+        img.src = item.url;
+        img.alt = item.file.name || ('Photo ' + (index + 1));
+        li.appendChild(img);
+
+        var remove = document.createElement('button');
+        remove.type = 'button';
+        remove.className = 'share-remove';
+        remove.setAttribute('aria-label', 'Remove photo ' + (index + 1));
+        remove.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-close"/></svg>';
+        remove.addEventListener('click', function () {
+          if (busy) return;
+          if (item.url) URL.revokeObjectURL(item.url);
+          selected.splice(index, 1);
+          setHint('');
+          renderThumbs();
+          updateSend();
+        });
+        li.appendChild(remove);
+        thumbsEl.appendChild(li);
+      });
+      countEl.textContent = selected.length + ' / ' + MAX_PHOTOS;
+      addBtn.disabled = busy || selected.length >= MAX_PHOTOS;
+      updateSend();
+    }
+
+    function addFiles(fileList) {
+      var files = Array.prototype.slice.call(fileList || []);
+      var skipped = 0;
+      var room = MAX_PHOTOS - selected.length;
+
+      files.forEach(function (file) {
+        if (!file || !(/^image\//.test(file.type) || /\.(jpe?g|png|gif|webp|heic|heif)$/i.test(file.name || ''))) {
+          skipped += 1;
+          return;
+        }
+        if (room <= 0) {
+          skipped += 1;
+          return;
+        }
+        selected.push({
+          file: file,
+          url: URL.createObjectURL(file)
+        });
+        room -= 1;
+      });
+
+      if (skipped && selected.length >= MAX_PHOTOS) {
+        setHint('You can send up to 5 photos at a time. Pick your favourites.');
+      } else if (skipped) {
+        setHint('Some files were skipped. Please choose image files.');
+      } else {
+        setHint('');
+      }
+      renderThumbs();
+    }
+
+    function loadImage(file) {
+      return new Promise(function (resolve, reject) {
+        var url = URL.createObjectURL(file);
+        var img = new Image();
+        img.onload = function () {
+          URL.revokeObjectURL(url);
+          resolve(img);
+        };
+        img.onerror = function () {
+          URL.revokeObjectURL(url);
+          reject(new Error('Could not read ' + (file.name || 'image')));
+        };
+        img.src = url;
+      });
+    }
+
+    function resizeToJpeg(file) {
+      return loadImage(file).then(function (img) {
+        var w = img.naturalWidth || img.width;
+        var h = img.naturalHeight || img.height;
+        if (!w || !h) throw new Error('Could not read image size');
+
+        var scale = Math.min(1, MAX_EDGE / Math.max(w, h));
+        var tw = Math.max(1, Math.round(w * scale));
+        var th = Math.max(1, Math.round(h * scale));
+        var canvas = document.createElement('canvas');
+        canvas.width = tw;
+        canvas.height = th;
+        var ctx = canvas.getContext('2d');
+        if (!ctx) throw new Error('Canvas unavailable');
+        ctx.drawImage(img, 0, 0, tw, th);
+
+        var dataUrl = canvas.toDataURL('image/jpeg', JPEG_QUALITY);
+        var comma = dataUrl.indexOf(',');
+        var base64 = comma >= 0 ? dataUrl.slice(comma + 1) : dataUrl;
+        var base = (file.name || 'photo').replace(/\.[^.]+$/, '');
+        var safe = base.replace(/[^\w\-]+/g, '_').replace(/^_+|_+$/g, '') || 'photo';
+        return {
+          filename: safe + '.jpg',
+          mimeType: 'image/jpeg',
+          data: base64
+        };
+      });
+    }
+
+    function setBusy(on) {
+      busy = on;
+      nameInput.disabled = on;
+      fileInput.disabled = on;
+      addBtn.disabled = on || selected.length >= MAX_PHOTOS;
+      sendBtn.disabled = on || !(nameInput.value.trim() && selected.length);
+      $$('.share-remove', thumbsEl).forEach(function (btn) { btn.disabled = on; });
+    }
+
+    addBtn.addEventListener('click', function () {
+      if (busy || selected.length >= MAX_PHOTOS) return;
+      fileInput.click();
+    });
+
+    fileInput.addEventListener('change', function () {
+      addFiles(fileInput.files);
+      fileInput.value = '';
+    });
+
+    nameInput.addEventListener('input', updateSend);
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      if (busy) return;
+
+      var name = nameInput.value.trim();
+      if (!name) {
+        setStatus('Please enter your name.', 'is-err');
+        nameInput.focus();
+        return;
+      }
+      if (!selected.length) {
+        setStatus('Add at least one photo.', 'is-err');
+        return;
+      }
+      if (!DRIVE_UPLOAD_URL) {
+        setStatus('Photo upload is not connected yet. Please try again later.', 'is-err');
+        return;
+      }
+
+      setBusy(true);
+      setHint('');
+      setStatus('Preparing your photos…');
+
+      var chain = Promise.resolve();
+      var photos = [];
+      selected.forEach(function (item, index) {
+        chain = chain.then(function () {
+          setStatus('Preparing photo ' + (index + 1) + ' of ' + selected.length + '…');
+          return resizeToJpeg(item.file).then(function (photo) {
+            photos.push(photo);
+          });
+        });
+      });
+
+      chain
+        .then(function () {
+          setStatus('Sending ' + photos.length + ' photo' + (photos.length === 1 ? '' : 's') + '…');
+          return fetch(DRIVE_UPLOAD_URL, {
+            method: 'POST',
+            headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+            body: JSON.stringify({ name: name, photos: photos })
+          });
+        })
+        .then(function (res) {
+          return res.text().then(function (text) {
+            var data = null;
+            try { data = text ? JSON.parse(text) : null; } catch (err) { data = null; }
+            if (!res.ok || !data || !data.ok) {
+              var msg = (data && data.error) || 'Upload failed. Please try again.';
+              throw new Error(msg);
+            }
+            return data;
+          });
+        })
+        .then(function () {
+          revokeAll();
+          selected = [];
+          renderThumbs();
+          setBusy(false);
+          setStatus('Thank you — your photos are saved.', 'is-ok');
+        })
+        .catch(function (err) {
+          setBusy(false);
+          updateSend();
+          setStatus((err && err.message) || 'Upload failed. Please try again.', 'is-err');
+        });
+    });
+
+    renderThumbs();
   })();
 
   /* ==================================================================
