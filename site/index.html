@@ -1,0 +1,2187 @@
+<!doctype html>
+<!--
+=====================================================================
+  NABIL & RISHA · WEDDING INVITATION
+  One self-contained file. Only external resource: Google Fonts.
+  Illustrations are loaded by relative path from the img/ folder
+  that sits beside this file.
+
+  MY DETAILS (exactly as given)
+  _______________________________________________________________
+  Bride:                 Risha Afrin
+  Groom:                 Nazmus Sadat Nabil
+  Name order on site:    Nabil & Risha
+  Initials (monogram):   N&R
+  Blessing line:         (not given, left out)
+  Hero subtitle:         (not given, left out)
+  Main date and time:    20th November 2026, 5:15 PM (+06:00 BST)
+  Venue name:            The Slow Deck Resort
+  Venue address:         Gaodia Road, Louhajang, Munshiganj, Bangladesh
+  Google Maps link:      https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D
+  Dress code:            champagne, Baby Pink, Sea Green, Olive
+  Bride bio:             (not given, left out)
+  Groom bio:             (not given, left out)
+  Footer message:        (not given, left out)
+  Families line:         (not given, left out)
+  RSVP WhatsApp:         +447804468515 (#NabbedByRisha)
+
+  MY FUNCTIONS (in the order given; empty venue and dress code use the main ones)
+  _______________________________________________________________
+  Mehndi    | 25 Nov 2026 | Wednesday | 8:00 PM  |                      |
+  Haldi     | 26 Nov 2026 | Thursday  | 11:00 AM |                      |
+  Nikah     | 20 Nov 2026 | Friday    | 4:30 PM  | The Slow Deck Resort | champagne, Baby Pink, Sea Green, Olive
+  Reception | 6 Dec 2026  | Sunday    | 7:30 PM  |                      |
+
+  TIME ZONE
+  The countdown and the calendar file use a fixed +06:00 offset, the
+  zone typed with the main date. They never use the visitor's own zone.
+
+  STYLE DNA (taken from the couple's illustrations)
+  _______________________________________________________________
+  Mood:     warm, storybook, intimate, golden, coastal
+  Palette:  ivory #FBF3E4 page · sand #F1E0C4 bands and cards ·
+            espresso #3B2218 text · henna #793D29 secondary text ·
+            emerald #16704F accent and buttons · gold #C99A45 borders
+            and ornaments · coral #E68946 highlights and petals ·
+            navy #0A182C night scenes and footer · moon #F4E3C4 text on navy
+            (champagne, Baby Pink, Sea Green, Olive: dress swatches only)
+  Type:     Cormorant Garamond (names, headings) · Parisienne (script
+            lines) · Outfit (body and labels, 16px, nothing under 14px)
+  Shapes:   arch-topped frames, thin double gold borders, pill buttons,
+            fine-line SVG ornaments and icons
+  Motion:   slow and soft; fade and rise entrances, 120ms stagger
+
+  SECTIONS
+   1. Opening reveal      6. Events timeline
+   2. Hero                7. Photo album + lightbox
+   3. Story (6 chapters)  8. Couple illustration + footer
+   4. Countdown           9. Effect layers (plane, petals, glitter, glow)
+   5. Venue details
+=====================================================================
+-->
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#FBF3E4">
+<title>Nabil &amp; Risha</title>
+<meta name="description" content="Nabil &amp; Risha · 20th November 2026 · The Slow Deck Resort">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%2316704F' stroke='%23C99A45' stroke-width='3'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Georgia,serif' font-size='21' font-weight='700' fill='%23F4E3C4'%3EN%26amp;R%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Outfit:wght@400;500;600&family=Parisienne&display=swap" rel="stylesheet">
+<link rel="preload" as="image" href="img/risha.webp">
+<link rel="preload" as="image" href="img/nabil.webp">
+
+<!-- Sets the page state before first paint: locked behind the envelope,
+     or fully open when the guest prefers reduced motion. -->
+<script>
+(function () {
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  document.documentElement.className = reduce ? 'js reduced is-open' : 'js is-locked';
+})();
+</script>
+
+<style>
+/* ==================================================================
+   TOKENS
+   ================================================================== */
+:root {
+  --ivory: #FBF3E4;
+  --sand: #F1E0C4;
+  --espresso: #3B2218;
+  --henna: #793D29;
+  --emerald: #16704F;
+  --gold: #C99A45;
+  --coral: #E68946;
+  --navy: #0A182C;
+  --moon: #F4E3C4;
+
+  /* dress-code swatches only */
+  --champagne: #F7E7CE;
+  --baby-pink: #F4C2C2;
+  --sea-green: #2E8B57;
+  --olive: #808000;
+
+  --display: 'Cormorant Garamond', 'Times New Roman', serif;
+  --script: 'Parisienne', 'Brush Script MT', cursive;
+  --body: 'Outfit', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --ease: cubic-bezier(.22, .61, .36, 1);
+  --pad-x: max(20px, env(safe-area-inset-left), env(safe-area-inset-right));
+}
+
+/* ==================================================================
+   BASE
+   ================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  /* the "font" shorthand resets numeral style, so lining figures are pinned here:
+     dates and times stay easy to read in the display face */
+  font-variant-numeric: lining-nums !important;
+}
+html { overflow-x: clip; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
+body {
+  margin: 0;
+  position: relative;
+  overflow-x: clip;
+  background: var(--ivory);
+  color: var(--espresso);
+  font: 400 16px/1.6 var(--body);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+html.is-locked, html.is-locked body,
+html.no-scroll, html.no-scroll body { overflow: hidden; }
+[hidden] { display: none !important; }
+[tabindex="-1"]:focus { outline: none; }
+img, svg { display: block; }
+img { max-width: 100%; }
+h1, h2, h3, p, figure, ol { margin: 0; }
+ol { padding: 0; list-style: none; }
+button { font: inherit; color: inherit; cursor: pointer; }
+a { color: inherit; }
+:focus-visible { outline: 3px solid var(--coral); outline-offset: 3px; border-radius: 6px; }
+.sprite { position: absolute; width: 0; height: 0; overflow: hidden; }
+
+/* ----- shared type ----- */
+.eyebrow {
+  font: 500 14px/1.3 var(--body);
+  letter-spacing: .24em;
+  text-transform: uppercase;
+  color: var(--emerald);
+}
+.title {
+  font: 600 clamp(36px, 8.4vw, 58px)/1.05 var(--display);
+  margin-top: 10px;
+}
+.script {
+  font: 400 clamp(26px, 6.4vw, 36px)/1.25 var(--script);
+  color: var(--emerald);
+}
+.divider { width: 160px; height: 20px; margin: 16px auto 0; color: var(--gold); }
+
+/* ----- buttons and links ----- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  min-height: 48px;
+  padding: 0 28px;
+  border: 1px solid var(--gold);
+  border-radius: 999px;
+  background: var(--emerald);
+  color: var(--ivory);
+  font: 500 16px/1 var(--body);
+  letter-spacing: .04em;
+  text-decoration: none;
+  box-shadow: 0 14px 26px -18px rgba(59, 34, 24, .7);
+  transition: transform .5s var(--ease), opacity .5s var(--ease);
+}
+.btn:hover { transform: translate3d(0, -2px, 0); }
+.btn:active { transform: translate3d(0, 0, 0); opacity: .9; }
+.btn svg { width: 20px; height: 20px; flex: none; }
+.btn--ghost { background: transparent; color: var(--emerald); border-color: var(--emerald); box-shadow: none; }
+.btn--moon { background: var(--moon); color: var(--navy); border-color: var(--gold); }
+.btn--night { background: transparent; color: var(--moon); border-color: var(--gold); box-shadow: none; }
+.link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  color: var(--emerald);
+  font-weight: 500;
+  text-decoration: underline;
+  text-decoration-color: var(--gold);
+  text-underline-offset: 5px;
+}
+.link svg { width: 18px; height: 18px; }
+
+/* ----- sections ----- */
+.band { background: var(--sand); }
+.section {
+  max-width: 1080px;
+  margin: 0 auto;
+  padding: clamp(64px, 13vw, 116px) var(--pad-x);
+  text-align: center;
+}
+.card {
+  position: relative;
+  background: var(--ivory);
+  border: 1px solid var(--gold);
+  border-radius: 20px;
+  box-shadow: inset 0 0 0 5px var(--ivory), inset 0 0 0 6px rgba(201, 154, 69, .45), 0 22px 40px -30px rgba(59, 34, 24, .55);
+}
+
+/* ----- scroll reveal (5.13) ----- */
+.js .rv {
+  opacity: 0;
+  transform: translate3d(0, 22px, 0);
+  transition: opacity .9s var(--ease), transform .9s var(--ease);
+  transition-delay: calc(var(--i, 0) * 120ms);
+}
+.js .rv.is-in { opacity: 1; transform: none; }
+.reduced .rv { opacity: 1; transform: none; transition: none; }
+
+/* ==================================================================
+   1. OPENING REVEAL (5.1)
+   ================================================================== */
+.reveal { display: none; }
+.js .reveal {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px var(--pad-x);
+  background:
+    radial-gradient(120% 80% at 50% 0%, rgba(230, 137, 70, .16), transparent 60%),
+    radial-gradient(90% 60% at 50% 100%, rgba(22, 112, 79, .10), transparent 70%),
+    var(--ivory);
+  touch-action: none;
+  overscroll-behavior: contain;
+}
+.reduced .reveal, .reveal[hidden] { display: none; }
+.reveal.is-leaving { opacity: 0; pointer-events: none; transition: opacity .6s ease; }
+.reveal-inner { width: 100%; text-align: center; }
+.reveal-names { font: 600 clamp(30px, 8vw, 44px)/1.1 var(--display); margin-bottom: clamp(28px, 7vh, 56px); }
+.reveal-hint { margin-top: clamp(32px, 8vh, 60px); color: var(--henna); letter-spacing: .08em; }
+
+.env {
+  position: relative;
+  width: min(84vw, 400px);
+  aspect-ratio: 3 / 2;
+  margin: 0 auto;
+  perspective: 900px;
+}
+.env-back, .env-front, .env-letter, .env-flap { position: absolute; }
+.env-back {
+  inset: 0;
+  z-index: 1;
+  border-radius: 10px;
+  background: linear-gradient(rgba(59, 34, 24, .10), rgba(59, 34, 24, .10)), var(--sand);
+  box-shadow: 0 30px 50px -30px rgba(59, 34, 24, .6);
+}
+.env-letter {
+  left: 7%; right: 7%; top: 9%; bottom: 7%;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  background: var(--ivory);
+  border: 1px solid rgba(201, 154, 69, .7);
+  border-radius: 6px;
+  color: var(--gold);
+  transition: transform .9s var(--ease);
+}
+.env-letter svg { width: 34%; height: auto; }
+.env-front { inset: 0; z-index: 3; width: 100%; height: 100%; }
+.env-front polygon, .env-flap polygon { stroke: rgba(201, 154, 69, .75); stroke-width: 1; vector-effect: non-scaling-stroke; }
+.env-side { fill: var(--sand); }
+.env-base { fill: var(--ivory); }
+.env-flap {
+  left: 0; top: 0;
+  z-index: 4;
+  width: 100%;
+  height: 62%;
+  transform-origin: 50% 0;
+  transition: transform .7s var(--ease);
+}
+.env-flap svg { width: 100%; height: 100%; overflow: visible; }
+.env-flap polygon { fill: var(--sand); }
+.env.is-open .env-flap { transform: rotateX(178deg); }
+.env.is-lifted .env-flap { z-index: 1; }
+.env.is-lifted .env-letter { transform: translate3d(0, -30%, 0); }
+
+.seal {
+  position: absolute;
+  left: 50%; top: 62%;
+  z-index: 5;
+  width: 84px; height: 84px;
+  margin: -42px 0 0 -42px;
+  padding: 0;
+  border: 2px solid var(--gold);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 34% 28%, rgba(255, 255, 255, .30), transparent 52%),
+    radial-gradient(circle at 70% 80%, rgba(10, 24, 44, .30), transparent 60%),
+    var(--emerald);
+  color: var(--moon);
+  box-shadow: 0 10px 18px -8px rgba(59, 34, 24, .7);
+  transition: transform .5s var(--ease), opacity .5s var(--ease);
+}
+.seal-face { position: relative; font: 600 27px/1 var(--display); letter-spacing: .02em; }
+.seal-glow, .seal-ring { position: absolute; border-radius: 50%; pointer-events: none; opacity: 0; }
+.seal-glow {
+  inset: -34px;
+  background: radial-gradient(circle, rgba(244, 227, 196, .95) 0%, rgba(201, 154, 69, .55) 38%, transparent 70%);
+  transition: opacity .4s ease;
+  z-index: -1;
+}
+.seal-ring { inset: -2px; border: 2px solid var(--gold); }
+.seal.is-glow .seal-glow { opacity: 1; }
+.seal.is-ring .seal-ring { animation: seal-ring .85s ease-out forwards; }
+.seal.is-gone { transform: scale(.6); opacity: 0; pointer-events: none; }
+/* a quiet invitation to tap: three slow pulses, then still */
+.is-locked .seal-ring { animation: seal-pulse 2.6s ease-out 1.2s 3; }
+@keyframes seal-ring { 0% { transform: scale(1); opacity: .95; } 100% { transform: scale(8); opacity: 0; } }
+@keyframes seal-pulse { 0% { transform: scale(1); opacity: .7; } 100% { transform: scale(1.7); opacity: 0; } }
+
+.burst { position: absolute; left: 50%; top: 62%; z-index: 6; width: 0; height: 0; pointer-events: none; }
+.burst i {
+  position: absolute;
+  left: 0; top: 0;
+  width: var(--s); height: var(--s);
+  background: var(--c);
+  clip-path: polygon(50% 0, 61% 39%, 100% 50%, 61% 61%, 50% 100%, 39% 61%, 0 50%, 39% 39%);
+  opacity: 0;
+  animation: burst 1s ease-out var(--d) forwards;
+}
+@keyframes burst {
+  0% { transform: translate(-50%, -50%) scale(.2); opacity: 0; }
+  18% { opacity: 1; }
+  100% { transform: translate(calc(-50% + var(--dx)), calc(-50% + var(--dy))) scale(1) rotate(var(--r)); opacity: 0; }
+}
+.reveal-flash { position: absolute; inset: 0; background: var(--moon); opacity: 0; pointer-events: none; }
+.reveal.is-flash .reveal-flash { animation: flash .7s ease-out forwards; }
+@keyframes flash { 0% { opacity: 0; } 35% { opacity: .85; } 100% { opacity: 0; } }
+
+/* ==================================================================
+   2. HERO (5.2)
+   ================================================================== */
+.hero {
+  position: relative;
+  min-height: 100vh;
+  min-height: 100svh;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  text-align: center;
+  padding: calc(40px + env(safe-area-inset-top)) var(--pad-x) calc(104px + env(safe-area-inset-bottom));
+}
+.hero-bg { position: absolute; inset: 0; pointer-events: none; will-change: transform; }
+.hero-sun {
+  position: absolute;
+  left: 50%; top: 44%;
+  width: min(120vw, 760px); height: min(120vw, 760px);
+  margin: calc(min(120vw, 760px) / -2) 0 0 calc(min(120vw, 760px) / -2);
+  background: radial-gradient(circle, rgba(230, 137, 70, .26) 0%, rgba(201, 154, 69, .14) 38%, transparent 68%);
+}
+.hero-arch {
+  position: absolute;
+  left: 50%; top: 5%;
+  height: 80%;
+  width: min(94vw, 620px);
+  margin-left: calc(min(94vw, 620px) / -2);
+  color: var(--gold);
+}
+.hero-waves { position: absolute; left: 0; bottom: 0; width: 100%; height: clamp(90px, 18vh, 150px); }
+.hero-inner { position: relative; display: flex; flex-direction: column; align-items: center; }
+.hero-mono { width: 64px; height: 64px; color: var(--gold); margin-bottom: 14px; }
+.names {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font: 600 clamp(64px, min(19vw, 15vh), 132px)/.92 var(--display);
+  letter-spacing: -.01em;
+}
+.names .amp { font: 400 .46em/1.1 var(--script); color: var(--emerald); letter-spacing: 0; }
+.hero-date {
+  margin-top: 22px;
+  font: 500 clamp(20px, 5.4vw, 26px)/1.2 var(--display);
+  letter-spacing: .06em; /* shown in the case it was typed in */
+  color: var(--henna);
+}
+.hero .btn { margin-top: 26px; }
+.scroll-hint {
+  position: absolute;
+  left: 0; right: 0;
+  bottom: calc(22px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  font-size: 14px;
+  letter-spacing: .22em;
+  text-transform: uppercase;
+  color: var(--henna);
+}
+.scroll-hint svg { width: 22px; height: 22px; color: var(--emerald); animation: hint 2.6s ease-in-out 1.5s 6; }
+@keyframes hint { 0%, 100% { transform: translate3d(0, 0, 0); } 50% { transform: translate3d(0, 7px, 0); } }
+
+/* ==================================================================
+   3. STORY (pinned, scroll-driven chapters)
+   ================================================================== */
+.chapter {
+  position: relative;
+  height: calc(var(--len) * 1vh);
+  height: calc(var(--len) * 1lvh);
+}
+.stage {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  height: 100lvh;
+  overflow: hidden;
+  background: var(--navy);
+}
+.scene { position: absolute; inset: 0; overflow: hidden; }
+.scene[data-in], .cap[data-in] { opacity: 0; }
+.scene-fill { position: absolute; inset: 0; background-size: 100% 100%; background-repeat: no-repeat; }
+.scene-img {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  max-width: none;
+  object-fit: cover;
+  will-change: transform;
+  backface-visibility: hidden;
+}
+/* letterboxed on tall phones: melt the picture's edges into its backdrop */
+.scene.is-boxed .scene-img {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+  mask-image: linear-gradient(to bottom, transparent 0, #000 12%, #000 88%, transparent 100%);
+}
+.stars {
+  position: absolute;
+  inset: 0 0 60% 0;
+  opacity: 0;
+  pointer-events: none;
+  background-image:
+    radial-gradient(1.4px 1.4px at 8% 22%, var(--moon) 55%, transparent 60%),
+    radial-gradient(1.2px 1.2px at 17% 58%, var(--moon) 55%, transparent 60%),
+    radial-gradient(1.6px 1.6px at 26% 12%, var(--moon) 55%, transparent 60%),
+    radial-gradient(1.1px 1.1px at 34% 40%, var(--moon) 55%, transparent 60%),
+    radial-gradient(1.4px 1.4px at 43% 20%, var(--moon) 55%, transparent 60%),
+    radial-gradient(1.2px 1.2px at 52% 52%, var(--moon) 55%, transparent 60%),
+    radial-gradient(1.5px 1.5px at 61% 9%, var(--moon) 55%, transparent 60%),
+    radial-gradient(1.1px 1.1px at 69% 34%, var(--moon) 55%, transparent 60%),
+    radial-gradient(1.4px 1.4px at 78% 16%, var(--moon) 55%, transparent 60%),
+    radial-gradient(1.2px 1.2px at 86% 46%, var(--moon) 55%, transparent 60%),
+    radial-gradient(1.5px 1.5px at 93% 26%, var(--moon) 55%, transparent 60%);
+}
+
+/* ----- captions ----- */
+.cap {
+  position: absolute;
+  z-index: 5;
+  left: 0; right: 0;
+  bottom: 22px;
+  bottom: calc(100lvh - 100svh + 22px + env(safe-area-inset-bottom));
+  width: min(calc(100% - 32px), 520px);
+  margin: 0 auto;
+  padding: 14px 20px 16px;
+  text-align: center;
+  background: rgba(251, 243, 228, .95);
+  border: 1px solid var(--gold);
+  border-radius: 18px;
+  box-shadow: inset 0 0 0 4px rgba(251, 243, 228, .95), inset 0 0 0 5px rgba(201, 154, 69, .4), 0 18px 34px -22px rgba(10, 24, 44, .8);
+  will-change: transform, opacity;
+}
+.cap-place { font: 500 14px/1.3 var(--body); letter-spacing: .24em; text-transform: uppercase; color: var(--emerald); }
+.cap-line { margin-top: 4px; font: 500 italic clamp(21px, 5.4vw, 26px)/1.25 var(--display); }
+.cap--night { background: rgba(10, 24, 44, .92); color: var(--moon); box-shadow: inset 0 0 0 4px rgba(10, 24, 44, .92), inset 0 0 0 5px rgba(201, 154, 69, .4), 0 18px 34px -22px rgba(0, 0, 0, .9); }
+.cap--night .cap-place { color: var(--gold); }
+
+/* ----- chapter 1: Risha, then Nabil, then the couple cards (5.3) ----- */
+.intro .stage {
+  background:
+    radial-gradient(80% 50% at 50% 64%, rgba(230, 137, 70, .16), transparent 70%),
+    radial-gradient(60% 40% at 50% 0%, rgba(201, 154, 69, .14), transparent 70%),
+    var(--ivory);
+}
+.intro-fit {
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 100vh;
+  height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: calc(14px + env(safe-area-inset-top)) 14px calc(18px + env(safe-area-inset-bottom));
+}
+.intro-heads { position: relative; flex: 1 1 auto; width: 100%; min-height: 96px; }
+.intro-title {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.intro-name { font: 600 clamp(46px, 13vw, 84px)/1 var(--display); }
+.intro-name--sm { font-size: clamp(36px, 9.6vw, 60px); margin-top: 6px; }
+.duo { flex: 0 0 auto; display: flex; align-items: flex-start; justify-content: center; gap: clamp(10px, 4vw, 48px); }
+.person { width: clamp(138px, 42vw, 250px); display: flex; flex-direction: column; align-items: center; }
+.person-frame { position: relative; width: 100%; display: flex; justify-content: center; padding: 22px 10px 12px; }
+.person-arch {
+  position: absolute;
+  inset: 0;
+  border-radius: 999px 999px 16px 16px;
+  background: linear-gradient(180deg, var(--sand), var(--ivory));
+  border: 1px solid var(--gold);
+  box-shadow: inset 0 0 0 5px var(--ivory), inset 0 0 0 6px rgba(201, 154, 69, .5), 0 22px 40px -28px rgba(59, 34, 24, .6);
+  opacity: 0;
+  will-change: transform, opacity;
+}
+.person-fig {
+  position: relative;
+  height: min(50vh, 124vw);
+  height: min(50svh, 124vw);
+  width: auto;
+  max-width: none;
+  transform-origin: 50% 100%;
+  will-change: transform, opacity;
+}
+.person-cap { display: flex; flex-direction: column; gap: 2px; padding: 12px 2px 0; text-align: center; opacity: 0; will-change: transform, opacity; }
+.person-name { font: 600 clamp(20px, 5.4vw, 30px)/1.15 var(--display); }
+
+/* ----- chapter 6: closing card ----- */
+.scene--close {
+  display: grid;
+  place-items: center;
+  padding: 24px var(--pad-x);
+  text-align: center;
+  color: var(--moon);
+  background:
+    radial-gradient(70% 50% at 50% 40%, rgba(201, 154, 69, .20), transparent 70%),
+    var(--navy);
+}
+.close-mono { width: 112px; height: 112px; margin: 0 auto 18px; color: var(--gold); }
+.close-names { font: 600 clamp(40px, 11vw, 72px)/1 var(--display); }
+.close-line { margin-top: 14px; color: var(--gold); }
+
+/* ----- story without motion: plain pictures and captions ----- */
+.reduced .chapter { height: auto; }
+.reduced .stage { position: static; height: auto; overflow: visible; background: none; max-width: 760px; margin: 0 auto; padding: 28px var(--pad-x) 12px; }
+.reduced .scene { position: static; opacity: 1; border-radius: 18px; border: 1px solid var(--gold); margin-top: 22px; }
+.reduced .scene-img { position: static; width: 100%; height: auto; }
+.reduced .scene-fill, .reduced .stars { display: none; }
+.reduced .cap { position: static; opacity: 1; margin-top: 12px; }
+.reduced .scene--close { padding: 48px 20px; }
+.reduced .intro-fit { position: static; height: auto; }
+.reduced .intro-heads { min-height: 0; padding: 12px 0 28px; }
+.reduced .intro-title { position: static; opacity: 1; padding: 10px 0; }
+.reduced .intro-title[data-title="couple"] { display: none; }
+.reduced .person-arch, .reduced .person-cap { opacity: 1; }
+
+/* ==================================================================
+   4. COUNTDOWN (5.4)
+   ================================================================== */
+.count { display: flex; justify-content: center; gap: clamp(8px, 2.6vw, 20px); margin-top: 32px; }
+.count-tile {
+  flex: 1 1 0;
+  max-width: 132px;
+  padding: clamp(26px, 7vw, 40px) 4px 16px;
+  border: 1px solid var(--gold);
+  border-radius: 999px 999px 16px 16px;
+  background: linear-gradient(180deg, var(--sand), var(--ivory));
+  box-shadow: inset 0 0 0 4px var(--ivory), inset 0 0 0 5px rgba(201, 154, 69, .45), 0 20px 36px -28px rgba(59, 34, 24, .6);
+}
+.count-tile b { display: block; font: 600 clamp(34px, 9.6vw, 60px)/1 var(--display); font-variant-numeric: lining-nums tabular-nums !important; }
+.count-tile span { display: block; margin-top: 8px; font-size: 14px; letter-spacing: .08em; color: var(--henna); }
+.count-done { margin-top: 28px; font: 400 clamp(48px, 14vw, 88px)/1.1 var(--script); color: var(--emerald); }
+.count-when { margin-top: 28px; font: 500 clamp(20px, 5vw, 24px)/1.3 var(--display); color: var(--henna); }
+
+/* ==================================================================
+   5. VENUE DETAILS (5.5)
+   ================================================================== */
+.cards { display: grid; gap: 18px; margin-top: 36px; text-align: center; }
+.info { padding: 28px 20px 26px; }
+.info-icon { width: 44px; height: 44px; margin: 0 auto 12px; padding: 10px; border: 1px solid var(--gold); border-radius: 50%; color: var(--emerald); }
+.info-value { margin-top: 6px; font: 600 clamp(24px, 6vw, 28px)/1.2 var(--display); }
+.info-sub { margin-top: 6px; color: var(--henna); }
+.swatches { display: flex; justify-content: center; gap: 10px; margin-top: 14px; }
+.swatches i { width: 28px; height: 28px; border-radius: 50%; border: 1px solid rgba(59, 34, 24, .35); box-shadow: inset 0 0 0 2px var(--ivory); }
+.actions { display: flex; flex-wrap: wrap; justify-content: center; gap: 14px; margin-top: 30px; }
+
+.map {
+  position: relative;
+  display: block;
+  margin-top: 30px;
+  overflow: hidden;
+  text-decoration: none;
+  aspect-ratio: 16 / 10;
+  max-height: 420px;
+  width: 100%;
+}
+.map svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+.map-land { fill: var(--sand); }
+.map-water { fill: rgba(22, 112, 79, .16); }
+.map-road { fill: none; stroke: var(--ivory); stroke-linecap: round; stroke-linejoin: round; }
+.map-edge { fill: none; stroke: rgba(201, 154, 69, .55); stroke-linecap: round; stroke-linejoin: round; }
+.map-route { fill: none; stroke: var(--emerald); stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: .1 8; }
+.map-label {
+  position: absolute;
+  left: 50%; bottom: 16px;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  width: max-content;
+  max-width: calc(100% - 28px);
+  padding: 10px 20px;
+  background: rgba(251, 243, 228, .95);
+  border: 1px solid var(--gold);
+  border-radius: 14px;
+  text-align: center;
+}
+.map-name { font: 600 clamp(20px, 5.2vw, 24px)/1.2 var(--display); }
+.map-go { font-size: 14px; letter-spacing: .1em; text-transform: uppercase; color: var(--emerald); }
+
+/* ==================================================================
+   6. EVENTS (5.6)
+   ================================================================== */
+.timeline { position: relative; max-width: 620px; margin: 40px auto 0; text-align: left; }
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 21px; top: 8px; bottom: 8px;
+  width: 2px;
+  background: linear-gradient(var(--gold), rgba(201, 154, 69, .25));
+}
+.event { position: relative; padding-left: 62px; }
+.event + .event { margin-top: 22px; }
+.event-num {
+  position: absolute;
+  left: 0; top: 18px;
+  width: 44px; height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--emerald);
+  color: var(--ivory);
+  font: 600 22px/1 var(--display);
+  box-shadow: 0 0 0 4px var(--ivory);
+}
+.event-body { padding: 22px 22px 14px; }
+.event-name { font: 600 clamp(28px, 7vw, 34px)/1.1 var(--display); }
+.event-when { display: flex; flex-wrap: wrap; gap: 2px 0; margin-top: 8px; font-weight: 500; color: var(--emerald); }
+.event-when span:nth-child(2)::before { content: '·'; margin: 0 9px; color: var(--gold); }
+.event-when span:nth-child(3) { flex-basis: 100%; } /* the time takes its own line */
+.event-venue { margin-top: 10px; font: 600 21px/1.25 var(--display); }
+.event-dress { margin-top: 4px; color: var(--henna); }
+.event-label { font-size: 14px; letter-spacing: .14em; text-transform: uppercase; color: var(--emerald); margin-right: 6px; }
+.event .link { margin-top: 6px; }
+
+/* ==================================================================
+   7. PHOTO ALBUM + LIGHTBOX (5.7)
+   ================================================================== */
+.album { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; margin-top: 36px; }
+.tile {
+  position: relative;
+  display: block;
+  width: 100%;
+  padding: 6px;
+  aspect-ratio: 4 / 3;
+  border: 1px solid var(--gold);
+  border-radius: 16px;
+  background: var(--ivory);
+  box-shadow: 0 20px 34px -28px rgba(59, 34, 24, .7);
+  overflow: hidden;
+}
+.tile img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  border-radius: 10px;
+  border: 1px solid rgba(201, 154, 69, .6);
+  transition: transform 1.2s var(--ease);
+}
+.tile:hover img { transform: scale(1.04); }
+
+.lb {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  grid-template-rows: auto minmax(0, 1fr) auto;
+  justify-items: center;
+  align-items: center;
+  gap: 12px;
+  padding: calc(14px + env(safe-area-inset-top)) var(--pad-x) calc(18px + env(safe-area-inset-bottom));
+  background: rgba(10, 24, 44, .96);
+  color: var(--moon);
+  opacity: 0;
+  transition: opacity .35s ease;
+}
+.lb[hidden] { display: none; }
+.lb.is-on { opacity: 1; }
+.lb-top { width: 100%; display: flex; justify-content: flex-end; }
+.lb-stage { min-height: 0; height: 100%; width: 100%; display: grid; place-items: center; touch-action: pan-y; }
+.lb-img { max-width: 100%; max-height: 100%; width: auto; height: auto; object-fit: contain; border: 1px solid var(--gold); border-radius: 12px; }
+.lb-nav { display: flex; align-items: center; gap: 22px; }
+.lb-count { min-width: 64px; text-align: center; font: 600 22px/1 var(--display); letter-spacing: .06em; }
+.lb-btn {
+  width: 48px; height: 48px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--moon);
+  transition: transform .4s var(--ease);
+}
+.lb-btn:hover { transform: scale(1.06); }
+.lb-btn svg { width: 22px; height: 22px; }
+
+/* ==================================================================
+   8. COUPLE ILLUSTRATION + FOOTER (5.8)
+   ================================================================== */
+.pair { display: flex; justify-content: center; align-items: flex-end; gap: 6px; padding: clamp(48px, 10vw, 80px) var(--pad-x) 0; }
+.pair img { height: clamp(210px, 52vw, 300px); width: auto; }
+.pair svg { width: 26px; height: 26px; color: var(--coral); margin-bottom: 46%; flex: none; }
+.footer-wave { width: 100%; height: clamp(40px, 8vw, 80px); margin-top: -1px; color: var(--navy); background: var(--ivory); }
+.footer {
+  background: var(--navy);
+  color: var(--moon);
+  text-align: center;
+  padding: 26px var(--pad-x) calc(64px + env(safe-area-inset-bottom));
+}
+.footer-mono { width: 76px; height: 76px; margin: 0 auto 16px; color: var(--gold); }
+.footer-names { font: 600 clamp(44px, 12vw, 76px)/1 var(--display); }
+.footer-date { margin-top: 14px; font: 500 clamp(20px, 5.2vw, 24px)/1.3 var(--display); letter-spacing: .06em; color: var(--gold); }
+.footer-venue { margin-top: 4px; }
+.footer .divider { margin-top: 26px; }
+.rsvp { margin-top: 26px; }
+.rsvp .eyebrow { color: var(--gold); }
+.rsvp .btn { margin-top: 14px; }
+.rsvp-who { margin-top: 12px; }
+.footer .btn--night { margin-top: 30px; }
+
+.lanterns { position: fixed; inset: 0; z-index: 9; overflow: hidden; pointer-events: none; }
+.lantern {
+  position: absolute;
+  left: var(--x);
+  bottom: -150px;
+  width: 70px; height: 105px;
+  margin-left: -35px;
+  opacity: 0;
+  animation: lantern-rise var(--t) cubic-bezier(.45, .3, .65, 1) var(--d) forwards;
+  will-change: transform, opacity;
+}
+.lantern svg { width: 100%; height: 100%; animation: lantern-sway 4.6s ease-in-out var(--d) infinite alternate; }
+@keyframes lantern-rise {
+  0% { transform: translate3d(0, 0, 0); opacity: 0; }
+  8% { opacity: 1; }
+  82% { opacity: 1; }
+  100% { transform: translate3d(0, -140vh, 0); opacity: 0; }
+}
+@keyframes lantern-sway { from { transform: translate3d(-16px, 0, 0) rotate(-4deg); } to { transform: translate3d(16px, 0, 0) rotate(4deg); } }
+.reduced .lantern { bottom: 38%; opacity: 1; animation: none; }
+.reduced .lantern svg { animation: none; }
+
+/* ==================================================================
+   9. EFFECT LAYERS (5.9 to 5.12). None of them can take a tap.
+   ================================================================== */
+/* plane flight path */
+#flight { position: absolute; top: 0; left: 0; z-index: 5; width: 100%; height: 0; overflow: hidden; pointer-events: none; }
+.flight-clip, .flight-in { position: absolute; top: 0; left: 0; width: 100%; height: 100%; will-change: transform; }
+.flight-clip { overflow: hidden; }
+.flight-in svg { width: 100%; height: 100%; overflow: visible; }
+.fl-dots path { fill: none; stroke: var(--emerald); stroke-width: 3.4; stroke-linecap: round; stroke-dasharray: .01 15; opacity: .4; }
+.fl-trail path { fill: none; stroke: var(--emerald); stroke-width: 2; stroke-linecap: round; stroke-dasharray: 12 10; opacity: .42; }
+.plane {
+  position: fixed;
+  top: 0; left: 0;
+  z-index: 6;
+  width: 68px; height: 32px;
+  margin: -16px 0 0 -34px;
+  opacity: 0;
+  pointer-events: none;
+  will-change: transform, opacity;
+}
+.plane svg { width: 100%; height: 100%; overflow: visible; }
+
+/* petals and glitter */
+.petals, .glitter { position: fixed; inset: 0; z-index: 7; overflow: hidden; pointer-events: none; }
+.petal {
+  position: absolute;
+  left: var(--x); top: 0;
+  width: var(--s); height: var(--s);
+  animation: petal-fall var(--t) linear var(--d) infinite;
+  will-change: transform;
+}
+.petal i {
+  display: block;
+  width: 100%; height: 100%;
+  border-radius: 82% 0 82% 0;
+  background: linear-gradient(135deg, var(--coral), var(--moon));
+  opacity: var(--o);
+  animation: petal-sway var(--w) ease-in-out var(--d) infinite alternate;
+}
+@keyframes petal-fall { from { transform: translate3d(0, -12vh, 0); } to { transform: translate3d(0, 112vh, 0); } }
+@keyframes petal-sway { from { transform: translate3d(-26px, 0, 0) rotate(-35deg); } to { transform: translate3d(26px, 0, 0) rotate(150deg); } }
+.spark {
+  position: absolute;
+  left: var(--x); top: var(--y);
+  width: var(--s); height: var(--s);
+  background: var(--c);
+  clip-path: polygon(50% 0, 60% 40%, 100% 50%, 60% 60%, 50% 100%, 40% 60%, 0 50%, 40% 40%);
+  opacity: 0;
+  animation: twinkle var(--t) ease-in-out var(--d) infinite alternate;
+}
+@keyframes twinkle { 0%, 35% { opacity: 0; transform: scale(.4) rotate(0deg); } 100% { opacity: .85; transform: scale(1) rotate(45deg); } }
+
+/* candle-glow canvas */
+#glow { position: fixed; inset: 0; z-index: 8; width: 100%; height: 100%; pointer-events: none; }
+
+/* soft veil used when a button jumps down the page */
+.veil { position: fixed; inset: 0; z-index: 60; background: var(--ivory); opacity: 0; pointer-events: none; transition: opacity .28s ease; }
+.veil.is-on { opacity: 1; }
+
+/* ==================================================================
+   LARGER SCREENS
+   ================================================================== */
+@media (min-width: 560px) {
+  .cards { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .album { gap: 18px; }
+}
+@media (min-width: 860px) {
+  .album { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+  .map { aspect-ratio: 21 / 9; }
+}
+
+/* ==================================================================
+   REDUCED MOTION (5.14)
+   ================================================================== */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    transition-delay: 0s !important;
+  }
+  .petals, .glitter, #glow { display: none !important; }
+}
+</style>
+</head>
+<body>
+<!-- ==================================================================
+     SVG SPRITE: monogram, ornaments, icons, plane, lantern
+     ================================================================== -->
+<svg class="sprite" aria-hidden="true" focusable="false">
+  <defs>
+    <radialGradient id="lantern-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0" stop-color="#F4E3C4" stop-opacity=".85"/>
+      <stop offset=".5" stop-color="#E68946" stop-opacity=".3"/>
+      <stop offset="1" stop-color="#E68946" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="lantern-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#C99A45"/>
+      <stop offset=".55" stop-color="#E68946"/>
+      <stop offset="1" stop-color="#F4E3C4"/>
+    </linearGradient>
+  </defs>
+  <symbol id="mono" viewBox="0 0 120 120">
+    <circle cx="60" cy="60" r="56" fill="none" stroke="currentColor" stroke-width="1.5"/>
+    <circle cx="60" cy="60" r="50" fill="none" stroke="currentColor" stroke-width=".8"/>
+    <text x="60" y="73" text-anchor="middle" font-family="'Cormorant Garamond', 'Times New Roman', serif" font-weight="600" font-size="38" fill="currentColor">N&amp;R</text>
+  </symbol>
+  <symbol id="divider" viewBox="0 0 160 20">
+    <path d="M4 10H60M100 10h56" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round"/>
+    <path d="M80 2l8 8-8 8-8-8z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+    <circle cx="66" cy="10" r="1.6" fill="currentColor"/>
+    <circle cx="94" cy="10" r="1.6" fill="currentColor"/>
+  </symbol>
+  <symbol id="i-cal" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5"/><path d="M3.5 10h17M8 3v4M16 3v4"/></g></symbol>
+  <symbol id="i-clock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7.5V12l3 2"/></g></symbol>
+  <symbol id="i-pin" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s6.5-6 6.5-11a6.5 6.5 0 1 0-13 0c0 5 6.5 11 6.5 11z"/><circle cx="12" cy="10" r="2.3"/></g></symbol>
+  <symbol id="i-dress" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M10 6a2 2 0 1 1 2 2v1.5"/><path d="M12 9.5l8.3 5.8a1 1 0 0 1-.6 1.8H4.3a1 1 0 0 1-.6-1.8z"/></g></symbol>
+  <symbol id="i-chat" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3.5a8.5 8.5 0 0 0-7.3 12.8L3.5 20.5l4.3-1.1A8.5 8.5 0 1 0 12 3.5z"/><path d="M8.5 11h7M8.5 14h4.5"/></g></symbol>
+  <symbol id="i-lantern" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M8 6h8l1.5 9.5-2 3h-7l-2-3z"/><path d="M9.5 3.5h5M12 3.5V6M12 11v4"/></g></symbol>
+  <symbol id="i-down" viewBox="0 0 24 24"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-prev" viewBox="0 0 24 24"><path d="M15 6l-6 6 6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6L6 18" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"/></symbol>
+  <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-heart" viewBox="0 0 24 24"><path d="M12 20.5s-8-4.9-8-10.7A4.6 4.6 0 0 1 12 7a4.6 4.6 0 0 1 8 2.8c0 5.8-8 10.7-8 10.7z" fill="currentColor"/></symbol>
+  <symbol id="lantern" viewBox="0 0 70 105">
+    <circle cx="35" cy="50" r="35" fill="url(#lantern-glow)"/>
+    <path d="M22 28h26l5 40-9 11H26l-9-11z" fill="url(#lantern-body)" stroke="#C99A45" stroke-width="1"/>
+    <path d="M24 24h22M35 18v6M30 79h10v5H30z" fill="none" stroke="#C99A45" stroke-width="1.4" stroke-linecap="round"/>
+    <ellipse cx="35" cy="66" rx="5" ry="8" fill="#F4E3C4"/>
+  </symbol>
+</svg>
+
+<!-- ==================================================================
+     1. OPENING REVEAL (5.1)
+     ================================================================== -->
+<div class="reveal" id="reveal" role="dialog" aria-modal="true" aria-label="A sealed invitation from Nabil &amp; Risha">
+  <div class="reveal-inner">
+    <p class="reveal-names">Nabil &amp; Risha</p>
+    <div class="env" id="env">
+      <div class="env-back"></div>
+      <div class="env-letter"><svg viewBox="0 0 120 120" aria-hidden="true"><use href="#mono"/></svg></div>
+      <svg class="env-front" viewBox="0 0 300 200" preserveAspectRatio="none" aria-hidden="true">
+        <polygon class="env-side" points="0,0 150,104 0,200"/>
+        <polygon class="env-side" points="300,0 150,104 300,200"/>
+        <polygon class="env-base" points="0,200 150,92 300,200"/>
+      </svg>
+      <div class="env-flap" aria-hidden="true">
+        <svg viewBox="0 0 300 124" preserveAspectRatio="none"><polygon points="0,0 300,0 150,124"/></svg>
+      </div>
+      <button class="seal" id="seal" type="button" aria-label="Open the invitation">
+        <span class="seal-glow"></span>
+        <span class="seal-ring"></span>
+        <span class="seal-face">N&amp;R</span>
+      </button>
+      <div class="burst" id="burst" aria-hidden="true"></div>
+    </div>
+    <p class="reveal-hint">Tap the seal to open</p>
+  </div>
+  <div class="reveal-flash" aria-hidden="true"></div>
+</div>
+
+<div id="page">
+
+<!-- ==================================================================
+     2. HERO (5.2)
+     ================================================================== -->
+<header class="hero" id="top">
+  <div class="hero-bg" id="hero-bg" aria-hidden="true">
+    <div class="hero-sun"></div>
+    <svg class="hero-arch" viewBox="0 0 400 640" preserveAspectRatio="xMidYMid meet">
+      <path d="M40 640V220a160 160 0 0 1 320 0v420" fill="none" stroke="currentColor" stroke-width="1.4"/>
+      <path d="M52 640V220a148 148 0 0 1 296 0v420" fill="none" stroke="currentColor" stroke-width=".7"/>
+      <path d="M200 30l7 12-7 12-7-12z" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linejoin="round"/>
+      <circle cx="200" cy="18" r="2" fill="currentColor"/>
+    </svg>
+    <svg class="hero-waves" viewBox="0 0 1200 120" preserveAspectRatio="none">
+      <path d="M0 52q150-36 300 0t300 0 300 0 300 0v68H0z" fill="#16704F" opacity=".10"/>
+      <path d="M0 76q150-30 300 0t300 0 300 0 300 0v44H0z" fill="#16704F" opacity=".14"/>
+      <path d="M0 98q150-22 300 0t300 0 300 0 300 0v22H0z" fill="#F1E0C4"/>
+    </svg>
+  </div>
+  <div class="hero-inner">
+    <svg class="hero-mono rv" viewBox="0 0 120 120" aria-hidden="true"><use href="#mono"/></svg>
+    <h1 class="names rv"><span>Nabil</span> <span class="amp">&amp;</span> <span>Risha</span></h1>
+    <p class="hero-date rv">20th November 2026</p>
+    <button class="btn rv" id="save-date" type="button">Save the Date</button>
+  </div>
+  <div class="scroll-hint rv" aria-hidden="true">
+    <span>Scroll</span>
+    <svg viewBox="0 0 24 24"><use href="#i-down"/></svg>
+  </div>
+</header>
+
+<!-- ==================================================================
+     3. STORY
+     Nabil narrates; Risha is the heart of it. Each chapter is a tall
+     section with a pinned stage. Scroll position drives every scene.
+     ================================================================== -->
+<div id="story">
+
+  <!-- Chapter 1: Risha, then Nabil, settling into the couple cards (5.3) -->
+  <section class="chapter intro" id="couple" data-chapter="intro" style="--len:360" aria-label="The couple">
+    <div class="stage">
+      <div class="intro-fit">
+        <div class="intro-heads">
+          <div class="intro-title" data-title="risha">
+            <h2 class="intro-name">Risha</h2>
+            <p class="script">Love of my life</p>
+          </div>
+          <div class="intro-title" data-title="nabil">
+            <p class="script">This is me,</p>
+            <h2 class="intro-name">Nabil</h2>
+          </div>
+          <div class="intro-title" data-title="couple">
+            <p class="eyebrow">The Couple</p>
+            <p class="intro-name intro-name--sm">Nabil &amp; Risha</p>
+          </div>
+        </div>
+        <div class="duo">
+          <figure class="person" data-person="bride">
+            <div class="person-frame">
+              <span class="person-arch"></span>
+              <img class="person-fig" src="img/risha.webp" width="435" height="1280" alt="Illustration of Risha in a brown embroidered salwar kameez, hands clasped, smiling">
+            </div>
+            <figcaption class="person-cap">
+              <span class="eyebrow">The Bride</span>
+              <span class="person-name">Risha Afrin</span>
+            </figcaption>
+          </figure>
+          <figure class="person" data-person="groom">
+            <div class="person-frame">
+              <span class="person-arch"></span>
+              <img class="person-fig" src="img/nabil.webp" width="410" height="1280" alt="Illustration of Nabil in a green shirt and glasses, hands in pockets, smiling">
+            </div>
+            <figcaption class="person-cap">
+              <span class="eyebrow">The Groom</span>
+              <span class="person-name">Nazmus Sadat Nabil</span>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 2: NSU -->
+  <section class="chapter" data-chapter="nsu" style="--len:300" aria-label="NSU">
+    <div class="stage">
+      <div class="scene">
+        <img class="scene-img" src="img/nsu-walk.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Illustration of Nabil walking across the NSU campus with his backpack">
+      </div>
+      <div class="cap">
+        <p class="cap-place">NSU</p>
+        <p class="cap-line">Just another day on campus.</p>
+      </div>
+      <div class="scene" data-in>
+        <img class="scene-img" src="img/nsu-glance.webp" width="1536" height="1024" loading="lazy" decoding="async" alt="Illustration of Nabil glancing back at Risha as she walks through the NSU courtyard">
+      </div>
+      <div class="cap" data-in>
+        <p class="cap-place">NSU</p>
+        <p class="cap-line">Until I noticed her.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 3: Saint Martin, day turning to night -->
+  <section class="chapter" data-chapter="beach" style="--len:340" aria-label="Saint Martin">
+    <div class="stage">
+      <div class="scene">
+        <div class="scene-fill" style="background-image:url(img/beach-sunset-fill.webp)"></div>
+        <img class="scene-img" src="img/beach-sunset.webp" width="1447" height="1087" loading="lazy" decoding="async" alt="Illustration of Nabil and Risha holding hands on the Saint Martin shore at sunset">
+      </div>
+      <div class="cap">
+        <p class="cap-place">Saint Martin</p>
+        <p class="cap-line">We watched the sun go down,</p>
+      </div>
+      <div class="scene" data-in>
+        <div class="scene-fill" style="background-image:url(img/beach-night-fill.webp)"></div>
+        <img class="scene-img" src="img/beach-night.webp" width="1447" height="1087" loading="lazy" decoding="async" alt="Illustration of Nabil and Risha holding hands on the Saint Martin shore under a full moon">
+      </div>
+      <div class="scene" data-in>
+        <div class="scene-fill" style="background-image:url(img/beach-moon-fill.webp)"></div>
+        <img class="scene-img" src="img/beach-moon.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Illustration of Nabil and Risha watching the moon over the sea late at night">
+      </div>
+      <div class="stars" data-stars></div>
+      <div class="cap cap--night" data-in>
+        <p class="cap-place">Saint Martin</p>
+        <p class="cap-line">and stayed for the moon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 4: Tabaq Coffee -->
+  <section class="chapter" data-chapter="cafe" style="--len:220" aria-label="Tabaq Coffee">
+    <div class="stage">
+      <div class="scene">
+        <img class="scene-img" src="img/cafe.webp" width="1448" height="1086" loading="lazy" decoding="async" alt="Illustration of Nabil and Risha talking over coffee at Tabaq Coffee">
+      </div>
+      <div class="cap">
+        <p class="cap-place">Tabaq Coffee</p>
+        <p class="cap-line">Coffee, and talks that never ran out.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 5: England -->
+  <section class="chapter" data-chapter="london" style="--len:220" aria-label="England">
+    <div class="stage">
+      <div class="scene">
+        <img class="scene-img" src="img/london.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Illustration of Nabil in England at night, smiling at Risha on a video call">
+      </div>
+      <div class="cap cap--night">
+        <p class="cap-place">England</p>
+        <p class="cap-line">Miles apart, one call away.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Chapter 6: back to Bangladesh -->
+  <section class="chapter" data-chapter="home" style="--len:320" aria-label="Back to Bangladesh">
+    <div class="stage">
+      <div class="scene">
+        <img class="scene-img" src="img/journeys.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Illustrated map of five flights from England to Dhaka">
+      </div>
+      <div class="cap cap--night">
+        <p class="cap-place">England to Dhaka</p>
+        <p class="cap-line">Five journeys home.</p>
+      </div>
+      <div class="cap cap--night" data-in>
+        <p class="cap-place">Back in Bangladesh</p>
+        <p class="cap-line">We decided to get engaged.</p>
+      </div>
+      <div class="scene scene--close" data-in>
+        <div>
+          <svg class="close-mono" viewBox="0 0 120 120" aria-hidden="true"><use href="#mono"/></svg>
+          <p class="close-names">Nabil &amp; Risha</p>
+          <p class="script close-line">And now, we would love to have you with us.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</div>
+
+<main id="invite">
+
+<!-- ==================================================================
+     4. COUNTDOWN (5.4)
+     ================================================================== -->
+<section class="section" id="countdown" tabindex="-1">
+  <p class="eyebrow rv">Save the Date</p>
+  <h2 class="title rv">Counting Down</h2>
+  <svg class="divider rv" viewBox="0 0 160 20" aria-hidden="true"><use href="#divider"/></svg>
+  <div class="count rv" id="count" role="timer" aria-label="Time left until the wedding">
+    <div class="count-tile"><b id="cd-days">0</b><span>Days</span></div>
+    <div class="count-tile"><b id="cd-hours">00</b><span>Hours</span></div>
+    <div class="count-tile"><b id="cd-minutes">00</b><span>Minutes</span></div>
+    <div class="count-tile"><b id="cd-seconds">00</b><span>Seconds</span></div>
+  </div>
+  <p class="count-done" id="count-done" hidden>Just Married</p>
+  <p class="count-when rv">20th November 2026, 5:15 PM (+06:00 BST)</p>
+</section>
+
+<!-- ==================================================================
+     5. VENUE DETAILS (5.5)
+     ================================================================== -->
+<div class="band">
+<section class="section" id="venue">
+  <p class="eyebrow rv">The Venue</p>
+  <h2 class="title rv">Venue Details</h2>
+  <svg class="divider rv" viewBox="0 0 160 20" aria-hidden="true"><use href="#divider"/></svg>
+
+  <div class="cards">
+    <div class="card info rv">
+      <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cal"/></svg>
+      <p class="eyebrow">Date</p>
+      <p class="info-value">20th November 2026</p>
+    </div>
+    <div class="card info rv">
+      <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-clock"/></svg>
+      <p class="eyebrow">Time</p>
+      <p class="info-value">5:15 PM</p>
+      <p class="info-sub">(+06:00 BST)</p>
+    </div>
+    <div class="card info rv">
+      <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
+      <p class="eyebrow">Venue</p>
+      <p class="info-value" id="venue-name">The Slow Deck Resort</p>
+      <p class="info-sub" id="venue-address">Gaodia Road, Louhajang, Munshiganj, Bangladesh</p>
+    </div>
+    <div class="card info rv">
+      <svg class="info-icon" viewBox="0 0 24 24" aria-hidden="true"><use href="#i-dress"/></svg>
+      <p class="eyebrow">Dress Code</p>
+      <p class="info-value">champagne, Baby Pink, Sea Green, Olive</p>
+      <div class="swatches" aria-hidden="true">
+        <i style="background:var(--champagne)"></i>
+        <i style="background:var(--baby-pink)"></i>
+        <i style="background:var(--sea-green)"></i>
+        <i style="background:var(--olive)"></i>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions rv">
+    <button class="btn" id="add-cal" type="button">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-cal"/></svg>
+      Add to Calendar
+    </button>
+    <a class="btn btn--ghost" id="directions" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&amp;g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-pin"/></svg>
+      Get Directions
+    </a>
+  </div>
+
+  <!-- illustrated map card: opens the same Maps link -->
+  <a class="card map rv" target="_blank" rel="noopener noreferrer" aria-label="Open The Slow Deck Resort in Google Maps" href="https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&amp;g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D">
+    <svg viewBox="0 0 360 200" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+      <rect class="map-land" width="360" height="200"/>
+      <path class="map-water" d="M0 150c60-20 120 18 190 0s120-22 170-4v54H0z"/>
+      <path class="map-edge" stroke-width="13" d="M-10 60c80-10 130 36 200 32s110-52 180-40"/>
+      <path class="map-edge" stroke-width="9" d="M120-10c8 60 30 106 26 220"/>
+      <path class="map-edge" stroke-width="7.5" d="M252-10c-4 50 12 80-16 104"/>
+      <path class="map-edge" stroke-width="6.5" d="M-10 112c60-8 110 8 156 0"/>
+      <path class="map-edge" stroke-width="6.5" d="M300 46c6 40 30 70 70 84"/>
+      <path class="map-road" stroke-width="10" d="M-10 60c80-10 130 36 200 32s110-52 180-40"/>
+      <path class="map-road" stroke-width="6" d="M120-10c8 60 30 106 26 220"/>
+      <path class="map-road" stroke-width="4.5" d="M252-10c-4 50 12 80-16 104"/>
+      <path class="map-road" stroke-width="3.5" d="M-10 112c60-8 110 8 156 0"/>
+      <path class="map-road" stroke-width="3.5" d="M300 46c6 40 30 70 70 84"/>
+      <path class="map-route" d="M30 58c60 0 110 36 160 34 20-1 36 0 46 2"/>
+      <ellipse cx="236" cy="97" rx="11" ry="3.5" fill="#3B2218" opacity=".22"/>
+      <path d="M236 96c-9-11-14-17-14-25a14 14 0 1 1 28 0c0 8-5 14-14 25z" fill="#16704F" stroke="#FBF3E4" stroke-width="1.6"/>
+      <circle cx="236" cy="71" r="5" fill="#FBF3E4"/>
+    </svg>
+    <span class="map-label">
+      <span class="map-name">The Slow Deck Resort</span>
+      <span class="map-go">Open in Maps</span>
+    </span>
+  </a>
+</section>
+</div>
+
+<!-- ==================================================================
+     6. EVENTS (5.6): every function, in the order given
+     ================================================================== -->
+<section class="section" id="events">
+  <p class="eyebrow rv">The Celebrations</p>
+  <h2 class="title rv">Events</h2>
+  <svg class="divider rv" viewBox="0 0 160 20" aria-hidden="true"><use href="#divider"/></svg>
+
+  <ol class="timeline">
+    <li class="event rv" data-name="Mehndi" data-start="2026-11-25T20:00:00+06:00">
+      <span class="event-num" aria-hidden="true">1</span>
+      <div class="card event-body">
+        <h3 class="event-name">Mehndi</h3>
+        <p class="event-when"><span>25 Nov 2026</span><span>Wednesday</span><span>8:00 PM</span></p>
+        <p class="event-venue">The Slow Deck Resort</p>
+        <p class="event-dress"><span class="event-label">Dress code</span><span data-dress>champagne, Baby Pink, Sea Green, Olive</span></p>
+        <a class="link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&amp;g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D">Get Directions <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </li>
+    <li class="event rv" data-name="Haldi" data-start="2026-11-26T11:00:00+06:00">
+      <span class="event-num" aria-hidden="true">2</span>
+      <div class="card event-body">
+        <h3 class="event-name">Haldi</h3>
+        <p class="event-when"><span>26 Nov 2026</span><span>Thursday</span><span>11:00 AM</span></p>
+        <p class="event-venue">The Slow Deck Resort</p>
+        <p class="event-dress"><span class="event-label">Dress code</span><span data-dress>champagne, Baby Pink, Sea Green, Olive</span></p>
+        <a class="link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&amp;g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D">Get Directions <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </li>
+    <li class="event rv" data-name="Nikah" data-start="2026-11-20T16:30:00+06:00">
+      <span class="event-num" aria-hidden="true">3</span>
+      <div class="card event-body">
+        <h3 class="event-name">Nikah</h3>
+        <p class="event-when"><span>20 Nov 2026</span><span>Friday</span><span>4:30 PM</span></p>
+        <p class="event-venue">The Slow Deck Resort</p>
+        <p class="event-dress"><span class="event-label">Dress code</span><span data-dress>champagne, Baby Pink, Sea Green, Olive</span></p>
+        <a class="link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&amp;g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D">Get Directions <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </li>
+    <li class="event rv" data-name="Reception" data-start="2026-12-06T19:30:00+06:00">
+      <span class="event-num" aria-hidden="true">4</span>
+      <div class="card event-body">
+        <h3 class="event-name">Reception</h3>
+        <p class="event-when"><span>6 Dec 2026</span><span>Sunday</span><span>7:30 PM</span></p>
+        <p class="event-venue">The Slow Deck Resort</p>
+        <p class="event-dress"><span class="event-label">Dress code</span><span data-dress>champagne, Baby Pink, Sea Green, Olive</span></p>
+        <a class="link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&amp;g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D">Get Directions <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
+      </div>
+    </li>
+  </ol>
+</section>
+
+<!-- ==================================================================
+     7. PHOTO ALBUM (5.7)
+     ================================================================== -->
+<div class="band">
+<section class="section" id="album">
+  <p class="eyebrow rv">Our Story in Pictures</p>
+  <h2 class="title rv">Photo Album</h2>
+  <svg class="divider rv" viewBox="0 0 160 20" aria-hidden="true"><use href="#divider"/></svg>
+
+  <div class="album" id="album-grid">
+    <button class="tile rv" type="button" aria-label="Open photo 1 of 8"><img src="img/nsu-walk.webp" width="1536" height="1024" loading="lazy" decoding="async" style="object-position:40% 30%" alt="Illustration of Nabil walking across the NSU campus with his backpack"></button>
+    <button class="tile rv" type="button" aria-label="Open photo 2 of 8"><img src="img/nsu-glance.webp" width="1536" height="1024" loading="lazy" decoding="async" style="object-position:40% 45%" alt="Illustration of Nabil glancing back at Risha as she walks through the NSU courtyard"></button>
+    <button class="tile rv" type="button" aria-label="Open photo 3 of 8"><img src="img/beach-sunset.webp" width="1447" height="1087" loading="lazy" decoding="async" style="object-position:42% 40%" alt="Illustration of Nabil and Risha holding hands on the Saint Martin shore at sunset"></button>
+    <button class="tile rv" type="button" aria-label="Open photo 4 of 8"><img src="img/beach-night.webp" width="1447" height="1087" loading="lazy" decoding="async" style="object-position:42% 40%" alt="Illustration of Nabil and Risha holding hands on the Saint Martin shore under a full moon"></button>
+    <button class="tile rv" type="button" aria-label="Open photo 5 of 8"><img src="img/beach-moon.webp" width="1448" height="1086" loading="lazy" decoding="async" style="object-position:42% 40%" alt="Illustration of Nabil and Risha watching the moon over the sea late at night"></button>
+    <button class="tile rv" type="button" aria-label="Open photo 6 of 8"><img src="img/cafe.webp" width="1448" height="1086" loading="lazy" decoding="async" style="object-position:50% 45%" alt="Illustration of Nabil and Risha talking over coffee at Tabaq Coffee"></button>
+    <button class="tile rv" type="button" aria-label="Open photo 7 of 8"><img src="img/london.webp" width="1600" height="900" loading="lazy" decoding="async" style="object-position:62% 50%" alt="Illustration of Nabil in England at night, smiling at Risha on a video call"></button>
+    <button class="tile rv" type="button" aria-label="Open photo 8 of 8"><img src="img/journeys.webp" width="1600" height="900" loading="lazy" decoding="async" style="object-position:50% 50%" alt="Illustrated map of five flights from England to Dhaka"></button>
+  </div>
+</section>
+</div>
+
+<!-- small full-length couple illustration above the footer -->
+<div class="pair rv">
+  <img src="img/nabil.webp" width="410" height="1280" loading="lazy" decoding="async" alt="Illustration of Nabil">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-heart"/></svg>
+  <img src="img/risha.webp" width="435" height="1280" loading="lazy" decoding="async" alt="Illustration of Risha">
+</div>
+
+</main>
+
+<!-- ==================================================================
+     8. FOOTER (5.8)
+     ================================================================== -->
+<svg class="footer-wave" viewBox="0 0 1200 80" preserveAspectRatio="none" aria-hidden="true">
+  <path d="M0 40q150-40 300 0t300 0 300 0 300 0v40H0z" fill="currentColor"/>
+</svg>
+<footer class="footer" id="footer">
+  <svg class="footer-mono rv" viewBox="0 0 120 120" aria-hidden="true"><use href="#mono"/></svg>
+  <p class="footer-names rv">Nabil &amp; Risha</p>
+  <p class="footer-date rv">20th November 2026</p>
+  <p class="footer-venue rv">The Slow Deck Resort</p>
+  <svg class="divider rv" viewBox="0 0 160 20" aria-hidden="true"><use href="#divider"/></svg>
+
+  <div class="rsvp rv">
+    <p class="eyebrow">RSVP</p>
+    <a class="btn btn--moon" id="rsvp" target="_blank" rel="noopener noreferrer" href="https://wa.me/447804468515?text=Hi%2C%20I%20will%20attend%20the%20wedding%20of%20Risha%20Afrin%20and%20Nazmus%20Sadat%20Nabil.">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-chat"/></svg>
+      RSVP on WhatsApp
+    </a>
+    <p class="rsvp-who">+447804468515 (#NabbedByRisha)</p>
+  </div>
+
+  <button class="btn btn--night rv" id="lantern-btn" type="button">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-lantern"/></svg>
+    Release a Wish Lantern
+  </button>
+</footer>
+
+</div><!-- /#page -->
+
+<!-- ==================================================================
+     LIGHTBOX (5.7)
+     ================================================================== -->
+<div class="lb" id="lightbox" role="dialog" aria-modal="true" aria-label="Photo viewer" hidden>
+  <div class="lb-top">
+    <button class="lb-btn" id="lb-close" type="button" aria-label="Close"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-close"/></svg></button>
+  </div>
+  <div class="lb-stage" id="lb-stage">
+    <img class="lb-img" id="lb-img" src="img/nsu-walk.webp" alt="">
+  </div>
+  <div class="lb-nav">
+    <button class="lb-btn" id="lb-prev" type="button" aria-label="Previous photo"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-prev"/></svg></button>
+    <p class="lb-count" id="lb-count" aria-live="polite">1 / 8</p>
+    <button class="lb-btn" id="lb-next" type="button" aria-label="Next photo"><svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-next"/></svg></button>
+  </div>
+</div>
+
+<!-- ==================================================================
+     9. EFFECT LAYERS (5.9 to 5.12): all pointer-events: none
+     ================================================================== -->
+<!-- plane flight path: dots ahead of the plane, dashes behind it -->
+<div id="flight" aria-hidden="true">
+  <div class="flight-clip" id="fl-dots-clip"><div class="flight-in" id="fl-dots-in"><svg class="fl-dots" id="fl-dots"></svg></div></div>
+  <div class="flight-clip" id="fl-trail-clip"><div class="flight-in" id="fl-trail-in"><svg class="fl-trail" id="fl-trail"></svg></div></div>
+</div>
+<div class="plane" id="plane" aria-hidden="true">
+  <svg viewBox="0 0 68 32">
+    <path d="M6.5 13.4c-1.6-2.4-5.2-1-4.7 1.9.4 2.3 3.100 3.900 4.700 5.200 1.600-1.300 4.300-2.900 4.700-5.200.5-2.900-3.100-4.300-4.700-1.900z" fill="#E68946"/>
+    <path d="M14 16h5" fill="none" stroke="#16704F" stroke-width="1.4" stroke-linecap="round" stroke-dasharray=".1 3.2"/>
+    <polygon points="22,3 66,16 22,29 31,16" fill="#FBF3E4" stroke="#16704F" stroke-width="1.6" stroke-linejoin="round"/>
+    <polygon points="31,16 66,16 22,29" fill="#16704F" opacity=".45"/>
+    <path d="M31 16h35" fill="none" stroke="#16704F" stroke-width="1.2"/>
+  </svg>
+</div>
+<div class="petals" id="petals" aria-hidden="true"></div>
+<div class="glitter" id="glitter" aria-hidden="true"></div>
+<canvas id="glow" aria-hidden="true"></canvas>
+<div class="lanterns" id="lanterns" aria-hidden="true"></div>
+<div class="veil" id="veil" aria-hidden="true"></div>
+<script>
+/* ==================================================================
+   SCRIPT
+   No libraries. One passive scroll listener feeds one animation
+   frame; scroll-driven work only writes transform and opacity.
+   ================================================================== */
+(function () {
+  'use strict';
+
+  /* ---------- helpers ---------- */
+  var root = document.documentElement;
+  var REDUCED = root.classList.contains('reduced');
+  var $ = function (sel, ctx) { return (ctx || document).querySelector(sel); };
+  var $$ = function (sel, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(sel)); };
+  var clamp = function (v, lo, hi) { return Math.min(hi, Math.max(lo, v)); };
+  var clamp01 = function (v) { return clamp(v, 0, 1); };
+  var ease = function (t) { return t * t * (3 - 2 * t); };
+  var ramp = function (p, a, b) { return ease(clamp01((p - a) / (b - a))); };
+  var rand = function (a, b) { return a + Math.random() * (b - a); };
+  var pick = function (list) { return list[Math.floor(Math.random() * list.length)]; };
+
+  /* Write a style only when its value changed. */
+  function put(el, prop, value) {
+    var key = '_' + prop;
+    if (el[key] === value) return;
+    el[key] = value;
+    el.style[prop] = value;
+  }
+  function fade(el, opacity) { put(el, 'opacity', opacity.toFixed(3)); }
+  function move(el, x, y, extra) {
+    put(el, 'transform', 'translate3d(' + x.toFixed(1) + 'px,' + y.toFixed(1) + 'px,0)' + (extra || ''));
+  }
+
+  var page = $('#page');
+  var veil = $('#veil');
+
+  /* ==================================================================
+     1. OPENING REVEAL (5.1)
+     glow, ring of light, flap opens with sparkles, flash, fade: 2s
+     ================================================================== */
+  var reveal = $('#reveal');
+  var env = $('#env');
+  var seal = $('#seal');
+  var opened = false;
+
+  function sparkleBurst() {
+    var host = $('#burst');
+    var colors = ['var(--gold)', 'var(--moon)', 'var(--coral)', 'var(--gold)'];
+    for (var i = 0; i < 28; i += 1) {
+      var bit = document.createElement('i');
+      var angle = (i / 28) * Math.PI * 2 + rand(-0.2, 0.2);
+      var reach = rand(70, 190);
+      bit.style.setProperty('--dx', (Math.cos(angle) * reach).toFixed(0) + 'px');
+      bit.style.setProperty('--dy', (Math.sin(angle) * reach).toFixed(0) + 'px');
+      bit.style.setProperty('--r', rand(-120, 120).toFixed(0) + 'deg');
+      bit.style.setProperty('--s', rand(8, 16).toFixed(0) + 'px');
+      bit.style.setProperty('--d', rand(0, 0.18).toFixed(2) + 's');
+      bit.style.setProperty('--c', colors[i % colors.length]);
+      host.appendChild(bit);
+    }
+  }
+
+  function finishOpen() {
+    reveal.hidden = true;
+    root.classList.remove('is-locked');
+    root.classList.add('is-open');
+    startAmbient();
+    startReveals();
+    refresh();
+  }
+
+  function openInvite() {
+    if (opened) return;
+    opened = true;
+    seal.classList.add('is-glow');
+    setTimeout(function () { seal.classList.add('is-ring'); }, 180);
+    setTimeout(function () {
+      env.classList.add('is-open');
+      seal.classList.add('is-gone');
+      sparkleBurst();
+    }, 520);
+    setTimeout(function () { env.classList.add('is-lifted'); }, 880);
+    setTimeout(function () { reveal.classList.add('is-flash'); }, 1250);
+    setTimeout(function () { reveal.classList.add('is-leaving'); }, 1480);
+    setTimeout(finishOpen, 2080);
+  }
+
+  if (REDUCED) {
+    opened = true;
+  } else {
+    if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+    window.scrollTo(0, 0);
+    seal.addEventListener('click', openInvite);
+    document.addEventListener('keydown', function (event) {
+      if (opened) return;
+      if (event.key === 'Enter' || event.key === ' ' || event.code === 'Space') {
+        event.preventDefault();
+        openInvite();
+      }
+    });
+  }
+
+  /* ==================================================================
+     3. STORY ENGINE
+     p is each chapter's progress, 0 at pin and 1 at release.
+       scene  in: [from, to]   fades in over the scenes below it
+              pan: [[p, x]...] which part of the picture sits mid-screen
+                               (x is a fraction of the picture's width)
+              y                vertical focus when the picture is cropped
+              z                slow zoom-out amount
+              k                under 1 lets tall phones see more of the
+                               picture, letterboxed over a soft backdrop
+       cap    in / out         when the caption card shows
+     ================================================================== */
+  var BEACH = { pan: [[0, 0.47]], y: 0.42, z: 0.05, k: 0.66 };
+  var STORY = {
+    nsu: {
+      scenes: [
+        { pan: [[0.04, 0.37], [0.40, 0.80]], y: 0.40, z: 0.05 },
+        { in: [0.42, 0.56], pan: [[0.58, 0.20], [0.92, 0.66]], y: 0.47, z: 0 }
+      ],
+      caps: [{ out: [0.32, 0.40] }, { in: [0.58, 0.68] }]
+    },
+    beach: {
+      scenes: [
+        BEACH,
+        { in: [0.30, 0.52], pan: BEACH.pan, y: BEACH.y, z: BEACH.z, k: BEACH.k },
+        { in: [0.68, 0.86], pan: BEACH.pan, y: BEACH.y, z: BEACH.z, k: BEACH.k }
+      ],
+      caps: [{ out: [0.24, 0.32] }, { in: [0.50, 0.60] }],
+      stars: [0.30, 0.52]
+    },
+    cafe: {
+      scenes: [{ pan: [[0.10, 0.37], [0.80, 0.67]], y: 0.50, z: 0.05 }],
+      caps: [{}]
+    },
+    london: {
+      scenes: [{ pan: [[0.15, 0.42], [0.80, 0.73]], y: 0.50, z: 0.04 }],
+      caps: [{}]
+    },
+    home: {
+      scenes: [
+        { pan: [[0.08, 0.19], [0.46, 0.80], [0.54, 0.80], [0.70, 0.47]], y: 0.50, z: 0.04 },
+        { in: [0.80, 0.93] }
+      ],
+      caps: [{ out: [0.38, 0.46] }, { in: [0.50, 0.58], out: [0.74, 0.80] }]
+    }
+  };
+
+  var chapters = $$('.chapter[data-chapter]').filter(function (el) {
+    return el.dataset.chapter !== 'intro';
+  }).map(function (el) {
+    var cfg = STORY[el.dataset.chapter];
+    var stage = $('.stage', el);
+    return {
+      el: el,
+      stage: stage,
+      cfg: cfg,
+      stars: $('[data-stars]', stage),
+      scenes: $$('.scene', stage).map(function (node, i) {
+        var img = $('.scene-img', node);
+        return {
+          el: node,
+          img: img,
+          cfg: cfg.scenes[i],
+          iw: img ? Number(img.getAttribute('width')) : 0,
+          ih: img ? Number(img.getAttribute('height')) : 0
+        };
+      }),
+      caps: $$('.cap', stage).map(function (node, i) { return { el: node, cfg: cfg.caps[i] }; })
+    };
+  });
+
+  /* Size each picture for the stage: cover, or a looser fit on tall phones. */
+  function layoutScene(scene, sw, sh) {
+    if (!scene.img) return;
+    var cover = Math.max(sw / scene.iw, sh / scene.ih);
+    var scale = cover;
+    var k = scene.cfg.k || 1;
+    if (k < 1 && sw / sh < scene.iw / scene.ih) scale = Math.max(sw / scene.iw, cover * k);
+    scene.dw = scene.iw * scale;
+    scene.dh = scene.ih * scale;
+    scene.boxed = scene.dh < sh - 1;
+    scene.ty = scene.boxed ? (sh - scene.dh) * 0.36 : clamp(sh / 2 - scene.cfg.y * scene.dh, sh - scene.dh, 0);
+    scene.img.style.width = scene.dw.toFixed(1) + 'px';
+    scene.img.style.height = scene.dh.toFixed(1) + 'px';
+    scene.el.classList.toggle('is-boxed', scene.boxed);
+  }
+
+  function panAt(keys, p) {
+    if (p <= keys[0][0]) return keys[0][1];
+    for (var i = 1; i < keys.length; i += 1) {
+      if (p <= keys[i][0]) {
+        var a = keys[i - 1];
+        var b = keys[i];
+        return a[1] + (b[1] - a[1]) * ease((p - a[0]) / (b[0] - a[0]));
+      }
+    }
+    return keys[keys.length - 1][1];
+  }
+
+  function measureChapter(ch) {
+    ch.top = ch.el.getBoundingClientRect().top + window.scrollY;
+    ch.h = ch.el.offsetHeight;
+    ch.sw = ch.stage.clientWidth;
+    ch.sh = ch.stage.clientHeight;
+    ch.range = Math.max(1, ch.h - ch.sh);
+  }
+
+  function updateChapter(ch, y) {
+    if (y < ch.top - ch.sh * 1.2 || y > ch.top + ch.h + ch.sh * 0.2) return;
+    var p = clamp01((y - ch.top) / ch.range);
+    var i;
+    for (i = 0; i < ch.scenes.length; i += 1) {
+      var scene = ch.scenes[i];
+      if (scene.cfg.in) fade(scene.el, ramp(p, scene.cfg.in[0], scene.cfg.in[1]));
+      if (!scene.img) continue;
+      var tx = clamp(ch.sw / 2 - panAt(scene.cfg.pan, p) * scene.dw, ch.sw - scene.dw, 0);
+      var zoom = scene.boxed ? 1 : 1 + (scene.cfg.z || 0) * (1 - p);
+      move(scene.img, tx, scene.ty, ' scale(' + zoom.toFixed(4) + ')');
+    }
+    for (i = 0; i < ch.caps.length; i += 1) {
+      var cap = ch.caps[i];
+      var shown = cap.cfg.in ? ramp(p, cap.cfg.in[0], cap.cfg.in[1]) : 1;
+      var gone = cap.cfg.out ? ramp(p, cap.cfg.out[0], cap.cfg.out[1]) : 0;
+      fade(cap.el, shown * (1 - gone));
+      move(cap.el, 0, (1 - shown) * 16 - gone * 12);
+    }
+    if (ch.stars) fade(ch.stars, ramp(p, ch.cfg.stars[0], ch.cfg.stars[1]));
+  }
+
+  /* ----- chapter 1: Risha rises in alone, moves aside for Nabil,
+           then both settle into their arch cards (5.3) ----- */
+  var introEl = $('[data-chapter="intro"]');
+  var intro = {
+    el: introEl,
+    stage: $('.stage', introEl),
+    bride: $('[data-person="bride"]', introEl),
+    groom: $('[data-person="groom"]', introEl),
+    titles: {
+      risha: $('[data-title="risha"]', introEl),
+      nabil: $('[data-title="nabil"]', introEl),
+      couple: $('[data-title="couple"]', introEl)
+    }
+  };
+  ['bride', 'groom'].forEach(function (who) {
+    var node = intro[who];
+    intro[who] = { el: node, fig: $('.person-fig', node), arch: $('.person-arch', node), cap: $('.person-cap', node) };
+  });
+
+  function measureIntro() {
+    measureChapter(intro);
+    var stageBox = intro.stage.getBoundingClientRect();
+    var brideBox = intro.bride.el.getBoundingClientRect();
+    intro.dx = stageBox.left + stageBox.width / 2 - (brideBox.left + brideBox.width / 2);
+  }
+
+  function title(el, shown, gone) {
+    fade(el, shown * (1 - gone));
+    move(el, 0, (1 - shown) * 16 - gone * 12);
+  }
+
+  function updateIntro(y) {
+    if (y < intro.top - intro.sh * 1.2 || y > intro.top + intro.h + intro.sh * 0.2) return;
+    var pre = clamp01((y + intro.sh - intro.top) / intro.sh); /* stage rising into view */
+    var p = clamp01((y - intro.top) / intro.range);
+    var arrive = ramp(pre, 0.45, 0.98);
+    var settle = ramp(p, 0.40, 0.62);
+    var cards = ramp(p, 0.74, 0.90);
+
+    fade(intro.bride.fig, arrive);
+    move(intro.bride.fig, (1 - settle) * intro.dx, (1 - arrive) * 44, ' scale(' + (1 + 0.1 * (1 - settle)).toFixed(4) + ')');
+    fade(intro.groom.fig, ramp(p, 0.44, 0.62));
+    move(intro.groom.fig, (1 - settle) * intro.sw * 0.3, 0);
+
+    ['bride', 'groom'].forEach(function (who) {
+      fade(intro[who].arch, cards);
+      move(intro[who].arch, 0, (1 - cards) * 18);
+      fade(intro[who].cap, cards);
+      move(intro[who].cap, 0, (1 - cards) * 18);
+    });
+
+    title(intro.titles.risha, ramp(p, 0.03, 0.14), ramp(p, 0.36, 0.46));
+    title(intro.titles.nabil, ramp(p, 0.58, 0.68), ramp(p, 0.74, 0.82));
+    title(intro.titles.couple, ramp(p, 0.84, 0.94), 0);
+  }
+
+  /* ==================================================================
+     2. HERO PARALLAX (5.2): background drifts at 35% of scroll speed
+     ================================================================== */
+  var heroBg = $('#hero-bg');
+  var heroH = 0;
+  function updateHero(y) {
+    if (y > heroH) return;
+    move(heroBg, 0, y * 0.35);
+  }
+
+  /* ==================================================================
+     9a. PLANE FLIGHT PATH (5.9)
+     One S-curve down the whole page, built from cubic segments that
+     swing between 10% and 90% of the width. Dots lie ahead of the
+     plane and a dashed trail behind it. The two are split at the
+     plane's height by a pair of counter-moving clip boxes, so scroll
+     only ever changes transforms.
+     ================================================================== */
+  var SVG_NS = 'http://www.w3.org/2000/svg';
+  var plane = $('#plane');
+  var fl = {
+    el: $('#flight'),
+    dots: $('#fl-dots'), trail: $('#fl-trail'),
+    dotsClip: $('#fl-dots-clip'), dotsIn: $('#fl-dots-in'),
+    trailClip: $('#fl-trail-clip'), trailIn: $('#fl-trail-in'),
+    W: 0, H: 0, n: 0, segH: 1, y0: 0, xa: 0, xb: 0
+  };
+
+  function buildFlight() {
+    var W = root.clientWidth;
+    var H = page.offsetHeight;
+    if (W === fl.W && H === fl.H) return;
+    fl.W = W;
+    fl.H = H;
+    fl.el.style.height = H + 'px';
+    fl.segH = Math.max(440, intro.sh * 0.9);
+    /* A turn at the left edge sits level with the hero names, so the
+       line swings wide of them. The curve begins above the page. */
+    fl.y0 = heroH * 0.43 - fl.segH;
+    fl.n = Math.ceil((H - fl.y0) / fl.segH);
+    fl.xa = W * 0.1;
+    fl.xb = W * 0.9;
+    [fl.dots, fl.trail].forEach(function (svg) {
+      svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+      while (svg.firstChild) svg.removeChild(svg.firstChild);
+    });
+    var half = fl.segH / 2;
+    for (var i = 0; i < fl.n; i += 1) {
+      var xs = i % 2 ? fl.xa : fl.xb;
+      var xe = i % 2 ? fl.xb : fl.xa;
+      var ys = fl.y0 + i * fl.segH;
+      var ye = ys + fl.segH;
+      var d = 'M' + xs.toFixed(1) + ' ' + ys.toFixed(1) +
+        'C' + xs.toFixed(1) + ' ' + (ys + half).toFixed(1) + ' ' +
+        xe.toFixed(1) + ' ' + (ye - half).toFixed(1) + ' ' +
+        xe.toFixed(1) + ' ' + ye.toFixed(1);
+      [fl.dots, fl.trail].forEach(function (svg) {
+        var path = document.createElementNS(SVG_NS, 'path');
+        path.setAttribute('d', d);
+        svg.appendChild(path);
+      });
+    }
+  }
+
+  /* Where the curve is, and which way it heads, at page height y. */
+  function flightPoint(y) {
+    var i = clamp(Math.floor((y - fl.y0) / fl.segH), 0, fl.n - 1);
+    var u = clamp01((y - fl.y0 - i * fl.segH) / fl.segH);
+    var lo = 0;
+    var hi = 1;
+    for (var step = 0; step < 22; step += 1) {
+      var mid = (lo + hi) / 2;
+      if (1.5 * mid - 1.5 * mid * mid + mid * mid * mid < u) lo = mid; else hi = mid;
+    }
+    var t = (lo + hi) / 2;
+    var xs = i % 2 ? fl.xa : fl.xb;
+    var xe = i % 2 ? fl.xb : fl.xa;
+    return {
+      x: xs + (xe - xs) * (3 * t * t - 2 * t * t * t),
+      angle: Math.atan2(fl.segH * (1.5 - 3 * t + 3 * t * t), (xe - xs) * 6 * t * (1 - t)) * 180 / Math.PI
+    };
+  }
+
+  function updateFlight(y) {
+    if (!fl.n) return;
+    var view = window.innerHeight;
+    var screenY = view * 0.42; /* the plane always sits 42% down the screen */
+    var py = clamp(y + screenY, 0, fl.H);
+    var point = flightPoint(py);
+    var flip = Math.abs(point.angle) > 90 ? ' scaleY(-1)' : '';
+    move(plane, point.x, screenY, ' rotate(' + point.angle.toFixed(1) + 'deg)' + flip);
+    /* hidden over the hero names, then 60% so text stays readable */
+    fade(plane, 0.6 * clamp01((y - view * 0.2) / (view * 0.25)));
+    move(fl.dotsClip, 0, py);
+    move(fl.dotsIn, 0, -py);
+    move(fl.trailClip, 0, py - fl.H);
+    move(fl.trailIn, 0, fl.H - py);
+  }
+
+  /* ==================================================================
+     SCROLL LOOP
+     ================================================================== */
+  var ticking = false;
+
+  function frame() {
+    ticking = false;
+    var y = window.scrollY || window.pageYOffset || 0;
+    if (!REDUCED) {
+      updateHero(y);
+      updateIntro(y);
+      for (var i = 0; i < chapters.length; i += 1) updateChapter(chapters[i], y);
+    }
+    updateFlight(y);
+  }
+
+  function onScroll() {
+    if (ticking) return;
+    ticking = true;
+    requestAnimationFrame(frame);
+  }
+
+  function measure() {
+    heroH = $('#top').offsetHeight;
+    measureIntro();
+    if (!REDUCED) {
+      chapters.forEach(function (ch) {
+        measureChapter(ch);
+        ch.scenes.forEach(function (scene) { layoutScene(scene, ch.sw, ch.sh); });
+      });
+    }
+    buildFlight();
+  }
+
+  function refresh() {
+    measure();
+    frame();
+  }
+
+  var refreshQueued = 0;
+  function queueRefresh() {
+    if (refreshQueued) return;
+    refreshQueued = requestAnimationFrame(function () {
+      refreshQueued = 0;
+      refresh();
+    });
+  }
+
+  window.addEventListener('scroll', onScroll, { passive: true });
+  window.addEventListener('resize', queueRefresh, { passive: true });
+  window.addEventListener('orientationchange', queueRefresh);
+  window.addEventListener('load', queueRefresh);
+  if ('ResizeObserver' in window) new ResizeObserver(queueRefresh).observe(page); /* page height changed */
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(queueRefresh);
+
+  /* A button that jumps down the page: a soft veil instead of a long scroll. */
+  function jumpTo(target) {
+    var go = function () {
+      window.scrollTo(0, target.getBoundingClientRect().top + window.scrollY);
+      target.focus({ preventScroll: true });
+    };
+    if (REDUCED) { go(); return; }
+    veil.classList.add('is-on');
+    setTimeout(function () {
+      go();
+      setTimeout(function () { veil.classList.remove('is-on'); }, 120);
+    }, 300);
+  }
+  $('#save-date').addEventListener('click', function () { jumpTo($('#countdown')); });
+
+  /* ==================================================================
+     4. COUNTDOWN (5.4)
+     20th November 2026, 5:15 PM at a fixed +06:00 offset, so every
+     guest sees the same moment whatever their own time zone is.
+     ================================================================== */
+  var OFFSET_MINUTES = 6 * 60;
+  var TARGET = Date.UTC(2026, 10, 20, 17, 15, 0) - OFFSET_MINUTES * 60 * 1000;
+  var cd = {
+    box: $('#count'), done: $('#count-done'),
+    days: $('#cd-days'), hours: $('#cd-hours'), minutes: $('#cd-minutes'), seconds: $('#cd-seconds')
+  };
+  var two = function (n) { return (n < 10 ? '0' : '') + n; };
+  var countdownTimer = 0;
+
+  function tick() {
+    var left = TARGET - Date.now();
+    if (left <= 0) {
+      cd.box.hidden = true;
+      cd.done.hidden = false;
+      clearInterval(countdownTimer);
+      return;
+    }
+    var total = Math.floor(left / 1000);
+    cd.days.textContent = String(Math.floor(total / 86400));
+    cd.hours.textContent = two(Math.floor((total % 86400) / 3600));
+    cd.minutes.textContent = two(Math.floor((total % 3600) / 60));
+    cd.seconds.textContent = two(total % 60);
+  }
+  tick();
+  countdownTimer = setInterval(tick, 1000);
+
+  /* ==================================================================
+     5. ADD TO CALENDAR (5.5)
+     Builds an .ics file from the events printed on the page, so the
+     calendar can never disagree with the invitation. Start times
+     only; no end times are made up.
+     ================================================================== */
+  function icsText(value) {
+    return String(value).replace(/\\/g, '\\\\').replace(/;/g, '\\;').replace(/,/g, '\\,').replace(/\r?\n/g, '\\n');
+  }
+  function icsStamp(date) {
+    return date.toISOString().replace(/[-:]/g, '').replace(/\.\d{3}/, '');
+  }
+  function icsFold(line) {
+    var out = [];
+    while (line.length > 74) {
+      out.push(line.slice(0, 74));
+      line = ' ' + line.slice(74);
+    }
+    out.push(line);
+    return out.join('\r\n');
+  }
+
+  function buildCalendar() {
+    var address = $('#venue-address').textContent.trim();
+    var now = icsStamp(new Date());
+    var lines = [
+      'BEGIN:VCALENDAR',
+      'VERSION:2.0',
+      'PRODID:-//Nabil & Risha//Wedding Invitation//EN',
+      'CALSCALE:GREGORIAN',
+      'METHOD:PUBLISH'
+    ];
+    $$('.event').forEach(function (item, index) {
+      var name = item.dataset.name;
+      var venue = $('.event-venue', item).textContent.trim();
+      var dress = $('[data-dress]', item).textContent.trim();
+      var link = $('a', item).href;
+      lines.push(
+        'BEGIN:VEVENT',
+        'UID:' + (index + 1) + '-' + name.toLowerCase() + '@nabil-and-risha',
+        'DTSTAMP:' + now,
+        'DTSTART:' + icsStamp(new Date(item.dataset.start)),
+        'SUMMARY:' + icsText(name + ' · Nabil & Risha'),
+        'LOCATION:' + icsText(venue + ', ' + address),
+        'DESCRIPTION:' + icsText('Dress code: ' + dress + '\nDirections: ' + link),
+        'URL:' + link,
+        'END:VEVENT'
+      );
+    });
+    lines.push('END:VCALENDAR');
+    return lines.map(icsFold).join('\r\n') + '\r\n';
+  }
+
+  $('#add-cal').addEventListener('click', function () {
+    var blob = new Blob([buildCalendar()], { type: 'text/calendar;charset=utf-8' });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement('a');
+    link.href = url;
+    link.download = 'Nabil-and-Risha.ics';
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+    setTimeout(function () { URL.revokeObjectURL(url); }, 4000);
+  });
+
+  /* ==================================================================
+     7. LIGHTBOX (5.7): previous, next, swipe, Escape, "1 / 8"
+     ================================================================== */
+  var lb = {
+    el: $('#lightbox'), img: $('#lb-img'), count: $('#lb-count'), stage: $('#lb-stage'),
+    close: $('#lb-close'), prev: $('#lb-prev'), next: $('#lb-next'),
+    tiles: $$('#album-grid .tile'), index: 0, open: false, opener: null, touch: null
+  };
+
+  function lbShow(index) {
+    var total = lb.tiles.length;
+    lb.index = (index + total) % total;
+    var source = $('img', lb.tiles[lb.index]);
+    lb.img.src = source.getAttribute('src');
+    lb.img.alt = source.alt;
+    lb.count.textContent = (lb.index + 1) + ' / ' + total;
+  }
+  function lbOpen(index, opener) {
+    lb.opener = opener;
+    lb.open = true;
+    lbShow(index);
+    lb.el.hidden = false;
+    root.classList.add('no-scroll');
+    requestAnimationFrame(function () { lb.el.classList.add('is-on'); });
+    lb.close.focus();
+  }
+  function lbClose() {
+    if (!lb.open) return;
+    lb.open = false;
+    lb.el.classList.remove('is-on');
+    root.classList.remove('no-scroll');
+    setTimeout(function () { if (!lb.open) lb.el.hidden = true; }, REDUCED ? 0 : 360);
+    if (lb.opener) lb.opener.focus({ preventScroll: true });
+  }
+
+  lb.tiles.forEach(function (tile, index) {
+    tile.addEventListener('click', function () { lbOpen(index, tile); });
+  });
+  lb.close.addEventListener('click', lbClose);
+  lb.prev.addEventListener('click', function () { lbShow(lb.index - 1); });
+  lb.next.addEventListener('click', function () { lbShow(lb.index + 1); });
+  lb.el.addEventListener('click', function (event) {
+    if (event.target === lb.el || event.target === lb.stage) lbClose();
+  });
+  lb.stage.addEventListener('touchstart', function (event) {
+    var t = event.changedTouches[0];
+    lb.touch = { x: t.clientX, y: t.clientY };
+  }, { passive: true });
+  lb.stage.addEventListener('touchend', function (event) {
+    if (!lb.touch) return;
+    var t = event.changedTouches[0];
+    var dx = t.clientX - lb.touch.x;
+    var dy = t.clientY - lb.touch.y;
+    lb.touch = null;
+    if (Math.abs(dx) > 44 && Math.abs(dx) > Math.abs(dy) * 1.4) lbShow(lb.index + (dx < 0 ? 1 : -1));
+  }, { passive: true });
+  document.addEventListener('keydown', function (event) {
+    if (!lb.open) return;
+    if (event.key === 'Escape') { lbClose(); return; }
+    if (event.key === 'ArrowLeft') { lbShow(lb.index - 1); return; }
+    if (event.key === 'ArrowRight') { lbShow(lb.index + 1); return; }
+    if (event.key === 'Tab') {
+      /* keep focus inside the viewer */
+      var ring = [lb.close, lb.prev, lb.next];
+      var at = ring.indexOf(document.activeElement);
+      event.preventDefault();
+      ring[(at + (event.shiftKey ? -1 : 1) + ring.length) % ring.length].focus();
+    }
+  });
+
+  /* ==================================================================
+     8. WISH LANTERNS (5.8): three glowing lanterns float up the screen
+     ================================================================== */
+  var lanternLayer = $('#lanterns');
+  $('#lantern-btn').addEventListener('click', function () {
+    if (lanternLayer.children.length >= 9) return;
+    [22, 50, 78].forEach(function (x, i) {
+      var lantern = document.createElement('div');
+      lantern.className = 'lantern';
+      lantern.style.setProperty('--x', (x + rand(-6, 6)).toFixed(1) + '%');
+      lantern.style.setProperty('--t', rand(9, 12).toFixed(2) + 's');
+      lantern.style.setProperty('--d', (i * 0.7 + rand(0, 0.4)).toFixed(2) + 's');
+      lantern.innerHTML = '<svg viewBox="0 0 70 105"><use href="#lantern"/></svg>';
+      lanternLayer.appendChild(lantern);
+      if (REDUCED) {
+        setTimeout(function () { lantern.remove(); }, 3500);
+      } else {
+        lantern.addEventListener('animationend', function (event) {
+          if (event.animationName === 'lantern-rise') lantern.remove();
+        });
+      }
+    });
+  });
+
+  /* ==================================================================
+     9b. PETALS (5.10) AND GLITTER (5.11): start after the reveal
+     ================================================================== */
+  function startAmbient() {
+    if (REDUCED) return;
+    var phone = window.innerWidth < 720;
+    var petals = $('#petals');
+    var glitter = $('#glitter');
+    var i;
+    for (i = 0; i < (phone ? 10 : 18); i += 1) {
+      var petal = document.createElement('span');
+      petal.className = 'petal';
+      petal.style.setProperty('--x', rand(2, 98).toFixed(1) + '%');
+      petal.style.setProperty('--s', rand(12, 20).toFixed(0) + 'px');
+      petal.style.setProperty('--t', rand(16, 27).toFixed(1) + 's');
+      petal.style.setProperty('--w', rand(3.6, 6.2).toFixed(1) + 's');
+      petal.style.setProperty('--d', (-rand(0, 27)).toFixed(1) + 's');
+      petal.style.setProperty('--o', rand(0.45, 0.8).toFixed(2));
+      petal.appendChild(document.createElement('i'));
+      petals.appendChild(petal);
+    }
+    for (i = 0; i < (phone ? 22 : 34); i += 1) {
+      var spark = document.createElement('span');
+      spark.className = 'spark';
+      spark.style.setProperty('--x', rand(3, 97).toFixed(1) + '%');
+      spark.style.setProperty('--y', rand(4, 96).toFixed(1) + '%');
+      spark.style.setProperty('--s', rand(6, 12).toFixed(0) + 'px');
+      spark.style.setProperty('--t', rand(2.6, 5.8).toFixed(1) + 's');
+      spark.style.setProperty('--d', (-rand(0, 6)).toFixed(1) + 's');
+      spark.style.setProperty('--c', pick(['var(--gold)', 'var(--gold)', 'var(--moon)']));
+      glitter.appendChild(spark);
+    }
+  }
+
+  /* ==================================================================
+     9c. CANDLE-GLOW CURSOR (5.12)
+     One canvas, pixel ratio capped at 2. A flickering glow with a
+     short trail follows the mouse; a soft ripple blooms under a
+     finger. The loop stops as soon as nothing is left to draw.
+     ================================================================== */
+  (function candleGlow() {
+    if (REDUCED) return;
+    var canvas = $('#glow');
+    var ctx = canvas.getContext('2d');
+    if (!ctx) return;
+    var w = 0, h = 0;
+    var mouse = { x: 0, y: 0, at: -1e9, level: 0 };
+    var trail = [];
+    var ripples = [];
+    var running = false;
+
+    function size() {
+      var ratio = Math.min(window.devicePixelRatio || 1, 2);
+      w = window.innerWidth;
+      h = window.innerHeight;
+      canvas.width = Math.round(w * ratio);
+      canvas.height = Math.round(h * ratio);
+      ctx.setTransform(ratio, 0, 0, ratio, 0, 0);
+    }
+    function blob(x, y, radius, alpha) {
+      var g = ctx.createRadialGradient(x, y, 0, x, y, radius);
+      g.addColorStop(0, 'rgba(244,227,196,' + (alpha * 0.9).toFixed(3) + ')');
+      g.addColorStop(0.35, 'rgba(230,137,70,' + (alpha * 0.42).toFixed(3) + ')');
+      g.addColorStop(1, 'rgba(201,154,69,0)');
+      ctx.fillStyle = g;
+      ctx.beginPath();
+      ctx.arc(x, y, radius, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    function draw(now) {
+      ctx.clearRect(0, 0, w, h);
+      var busy = false;
+      var i;
+
+      mouse.level += ((now - mouse.at < 900 ? 1 : 0) - mouse.level) * 0.1;
+      if (mouse.level > 0.01) {
+        busy = true;
+        var flicker = 1 + 0.07 * Math.sin(now * 0.019) + 0.05 * Math.sin(now * 0.047 + 1.3);
+        for (i = trail.length - 1; i >= 0; i -= 1) {
+          var age = (now - trail[i].at) / 480;
+          if (age >= 1) { trail.splice(i, 1); continue; }
+          blob(trail[i].x, trail[i].y, 46 * (1 - age * 0.5), 0.26 * (1 - age) * mouse.level);
+        }
+        blob(mouse.x, mouse.y, 92 * flicker, 0.6 * mouse.level * (0.9 + 0.1 * flicker));
+      } else {
+        trail.length = 0;
+      }
+
+      for (i = ripples.length - 1; i >= 0; i -= 1) {
+        var k = (now - ripples[i].at) / 800;
+        if (k >= 1) { ripples.splice(i, 1); continue; }
+        busy = true;
+        var grow = 1 - Math.pow(1 - k, 3);
+        var radius = 14 + 78 * grow;
+        blob(ripples[i].x, ripples[i].y, radius, 0.55 * (1 - k));
+        ctx.strokeStyle = 'rgba(201,154,69,' + (0.6 * (1 - k)).toFixed(3) + ')';
+        ctx.lineWidth = 1.5;
+        ctx.beginPath();
+        ctx.arc(ripples[i].x, ripples[i].y, radius * 0.86, 0, Math.PI * 2);
+        ctx.stroke();
+      }
+
+      if (busy) requestAnimationFrame(draw);
+      else { running = false; ctx.clearRect(0, 0, w, h); } /* asleep */
+    }
+    function wake() {
+      if (running) return;
+      running = true;
+      requestAnimationFrame(draw);
+    }
+
+    size();
+    window.addEventListener('resize', size, { passive: true });
+    window.addEventListener('pointermove', function (event) {
+      if (event.pointerType !== 'mouse') return;
+      var now = performance.now();
+      mouse.x = event.clientX;
+      mouse.y = event.clientY;
+      mouse.at = now;
+      var last = trail[trail.length - 1];
+      if (!last || now - last.at > 34) {
+        trail.push({ x: mouse.x, y: mouse.y, at: now });
+        if (trail.length > 14) trail.shift();
+      }
+      wake();
+    }, { passive: true });
+    window.addEventListener('pointerdown', function (event) {
+      if (event.pointerType === 'mouse') return;
+      ripples.push({ x: event.clientX, y: event.clientY, at: performance.now() });
+      if (ripples.length > 6) ripples.shift();
+      wake();
+    }, { passive: true });
+  })();
+
+  /* ==================================================================
+     SCROLL REVEAL (5.13): headings, cards and photos fade and rise as
+     they enter, 120ms apart
+     ================================================================== */
+  function startReveals() {
+    var items = $$('.rv');
+    if (REDUCED || !('IntersectionObserver' in window)) {
+      items.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var watcher = new IntersectionObserver(function (entries) {
+      var order = 0;
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        entry.target.style.setProperty('--i', String(Math.min(order, 6)));
+        order += 1;
+        entry.target.classList.add('is-in');
+        watcher.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
+    items.forEach(function (el) { watcher.observe(el); });
+  }
+
+  /* ---------- start ---------- */
+  refresh();
+  if (REDUCED) finishOpen();
+  if (window.matchMedia) {
+    var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
+    var onMotion = function () { window.location.reload(); };
+    if (motion.addEventListener) motion.addEventListener('change', onMotion);
+    else if (motion.addListener) motion.addListener(onMotion);
+  }
+})();
+</script>
+</body>
+</html>
