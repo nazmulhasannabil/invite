@@ -1124,6 +1124,31 @@ a { color: inherit; }
 .veil { position: fixed; inset: 0; z-index: 60; background: var(--ivory); opacity: 0; pointer-events: none; transition: opacity .28s ease; }
 .veil.is-on { opacity: 1; }
 
+/* background music: stays above the envelope, lightbox, and announcement */
+.sound-btn {
+  position: fixed;
+  right: max(16px, env(safe-area-inset-right));
+  bottom: max(16px, env(safe-area-inset-bottom));
+  z-index: 120;
+  width: 52px;
+  height: 52px;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid var(--gold);
+  border-radius: 50%;
+  background: var(--emerald);
+  color: var(--ivory);
+  box-shadow: 0 14px 26px -16px rgba(59, 34, 24, .75);
+  transition: transform .4s var(--ease);
+}
+.sound-btn:hover { transform: translate3d(0, -2px, 0); }
+.sound-btn:active { transform: none; }
+.sound-btn svg { width: 24px; height: 24px; }
+.sound-btn .sound-off { display: none; }
+.sound-btn.is-muted .sound-on { display: none; }
+.sound-btn.is-muted .sound-off { display: block; }
+
 /* ==================================================================
    LARGER SCREENS
    ================================================================== */
@@ -1715,6 +1740,18 @@ a { color: inherit; }
 <canvas id="glow" aria-hidden="true"></canvas>
 <div class="lanterns" id="lanterns" aria-hidden="true"></div>
 <div class="veil" id="veil" aria-hidden="true"></div>
+
+<audio id="bgm" src="audio/cant-help-falling-in-love.mp3" loop preload="auto"></audio>
+<button class="sound-btn" id="sound-btn" type="button" aria-pressed="false" aria-label="Mute music">
+  <svg class="sound-on" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M4 9.5v5h3.2L12 18.5v-13L7.2 9.5H4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M15.5 9.2a3.6 3.6 0 0 1 0 5.6M17.8 7a6.2 6.2 0 0 1 0 10" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+  <svg class="sound-off" viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M4 9.5v5h3.2L12 18.5v-13L7.2 9.5H4z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+    <path d="M16 10l4 4M20 10l-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+  </svg>
+</button>
 <script>
 /* ==================================================================
    SCRIPT
@@ -1759,6 +1796,52 @@ a { color: inherit; }
   var env = $('#env');
   var seal = $('#seal');
   var opened = false;
+
+  /* Background music. Unmuted by default. Playback starts on the seal
+     tap, which is the gesture browsers need before they allow sound. */
+  var bgm = $('#bgm');
+  var soundBtn = $('#sound-btn');
+  var musicOn = true;
+  var musicRetryArmed = false;
+
+  function paintSoundBtn() {
+    if (!soundBtn) return;
+    soundBtn.classList.toggle('is-muted', !musicOn);
+    soundBtn.setAttribute('aria-pressed', musicOn ? 'false' : 'true');
+    soundBtn.setAttribute('aria-label', musicOn ? 'Mute music' : 'Unmute music');
+  }
+
+  function armMusicRetry() {
+    if (!bgm || musicRetryArmed) return;
+    musicRetryArmed = true;
+    function retry(event) {
+      if (!musicOn) return;
+      if (event.target && event.target.closest && event.target.closest('#sound-btn')) return;
+      var pending = bgm.play();
+      if (!pending || !pending.then) return;
+      pending.then(function () {
+        musicRetryArmed = false;
+        document.removeEventListener('pointerdown', retry, true);
+      }).catch(function () {});
+    }
+    document.addEventListener('pointerdown', retry, true);
+  }
+
+  function startMusic() {
+    if (!bgm || !musicOn) return;
+    bgm.volume = 0.55;
+    var pending = bgm.play();
+    if (pending && pending.catch) pending.catch(armMusicRetry);
+  }
+
+  if (soundBtn && bgm) {
+    soundBtn.addEventListener('click', function () {
+      musicOn = !musicOn;
+      bgm.muted = !musicOn;
+      paintSoundBtn();
+      if (musicOn) startMusic();
+    });
+  }
 
   function sparkleBurst() {
     var host = $('#burst');
@@ -1819,6 +1902,7 @@ a { color: inherit; }
   function openInvite() {
     if (opened) return;
     opened = true;
+    startMusic();
     seal.classList.add('is-glow');
     setTimeout(function () { seal.classList.add('is-ring'); }, 180);
     setTimeout(function () {
@@ -2801,7 +2885,10 @@ a { color: inherit; }
 
   /* ---------- start ---------- */
   refresh();
-  if (REDUCED) finishOpen();
+  if (REDUCED) {
+    finishOpen();
+    startMusic();
+  }
   if (window.matchMedia) {
     var motion = window.matchMedia('(prefers-reduced-motion: reduce)');
     var onMotion = function () { window.location.reload(); };
