@@ -540,18 +540,21 @@ a { color: inherit; }
 
 /* ----- chapter 6: closing card ----- */
 .scene--close {
-  display: grid;
-  place-items: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 24px var(--pad-x);
   text-align: center;
   color: var(--moon);
   background:
-    radial-gradient(70% 50% at 50% 40%, rgba(201, 154, 69, .20), transparent 70%),
+    radial-gradient(58% 46% at 50% 36%, rgba(10, 24, 44, .55), transparent 72%),
+    url("img/villa-night.webp") center center / cover no-repeat,
     var(--navy);
 }
-.close-mono { width: 112px; height: 112px; margin: 0 auto 18px; color: var(--gold); }
-.close-names { font: 600 clamp(40px, 11vw, 72px)/1 var(--display); }
-.close-line { margin-top: 14px; color: var(--gold); }
+.close-copy { transform: translateY(-8vh); }
+.close-mono { width: 112px; height: 112px; margin: 0 auto 18px; color: var(--gold); filter: drop-shadow(0 6px 14px rgba(10, 24, 44, .55)); }
+.close-names { font: 600 clamp(40px, 11vw, 72px)/1 var(--display); text-shadow: 0 4px 18px rgba(10, 24, 44, .7); }
+.close-line { margin-top: 14px; color: var(--gold); text-shadow: 0 3px 14px rgba(10, 24, 44, .75); }
 
 /* ----- story without motion: plain pictures and captions ----- */
 .reduced .chapter { height: auto; }
@@ -561,6 +564,7 @@ a { color: inherit; }
 .reduced .scene-fill, .reduced .stars { display: none; }
 .reduced .cap { position: static; opacity: 1; margin-top: 12px; }
 .reduced .scene--close { padding: 48px 20px; }
+.reduced .close-copy { transform: none; }
 .reduced .intro-fit { position: static; height: auto; }
 .reduced .intro-heads { min-height: 0; padding: 12px 0 28px; }
 .reduced .intro-title { position: static; opacity: 1; padding: 10px 0; }
@@ -1426,7 +1430,7 @@ a { color: inherit; }
         <p class="cap-line">We decided to get engaged.</p>
       </div>
       <div class="scene scene--close" data-in>
-        <div>
+        <div class="close-copy">
           <svg class="close-mono" viewBox="0 0 120 120" aria-hidden="true"><use href="#mono"/></svg>
           <p class="close-names">Nabil &amp; Risha</p>
           <p class="script close-line">And now, we would love to have you with us.</p>
@@ -1641,8 +1645,8 @@ a { color: inherit; }
   </div>
 
   <div class="share rv" id="share">
-    <p class="eyebrow">Share Moments</p>
-    <p class="share-note">Choose your best 5 photos — the ones you want to keep — so these moments stay easy to look back on for the rest of the time.</p>
+    <p class="eyebrow">Share Your Moments</p>
+    <p class="share-note">Choose your 5 favorite photos from the wedding and share them with us. Let&rsquo;s keep these beautiful memories alive for years to come!</p>
     <form class="share-form" id="share-form" novalidate>
       <label class="share-label" for="share-name">Your name</label>
       <input class="share-name" id="share-name" name="name" type="text" autocomplete="name" required maxlength="80" placeholder="Your name" enterkeyhint="done">
