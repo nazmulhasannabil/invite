@@ -2,7 +2,7 @@
 <!--
 =====================================================================
   NABIL & RISHA · WEDDING INVITATION
-  One self-contained file. Only external resource: Google Fonts.
+  One self-contained file. External: Google Fonts, GSAP (CDN).
   Illustrations are loaded by relative path from the img/ folder
   that sits beside this file.
 
@@ -25,12 +25,9 @@
   Families line:         (not given, left out)
   RSVP WhatsApp:         +447804468515 (#NabbedByRisha)
 
-  MY FUNCTIONS (in the order given; empty venue and dress code use the main ones)
+  MY FUNCTIONS (empty venue and dress code use the main ones)
   _______________________________________________________________
-  Mehndi    | 25 Nov 2026 | Wednesday | 8:00 PM  |                      |
-  Haldi     | 26 Nov 2026 | Thursday  | 11:00 AM |                      |
   Nikah     | 20 Nov 2026 | Friday    | 4:30 PM  | The Slow Deck Resort | champagne, Baby Pink, Sea Green, Olive
-  Reception | 6 Dec 2026  | Sunday    | 7:30 PM  |                      |
 
   TIME ZONE
   The countdown and the calendar file use a fixed +06:00 offset, the
@@ -538,7 +535,69 @@ a { color: inherit; }
 .person-cap { display: flex; flex-direction: column; gap: 2px; padding: 12px 2px 0; text-align: center; opacity: 0; will-change: transform, opacity; }
 .person-name { font: 600 clamp(20px, 5.4vw, 30px)/1.15 var(--display); }
 
-/* ----- chapter 6: closing card ----- */
+/* ----- chapter 6: rose flight + closing card ----- */
+.rose-stage {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  background: var(--navy);
+  z-index: 0;
+  container-type: size;
+}
+.rose-frame {
+  position: relative;
+  aspect-ratio: 576 / 1024;
+  width: min(100cqw, calc(100cqh * 576 / 1024));
+  height: min(100cqh, calc(100cqw * 1024 / 576));
+  overflow: hidden;
+}
+.rose-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  pointer-events: none;
+  will-change: opacity;
+}
+.rose-bg[data-frame="1"] { opacity: 1; }
+/* Zero-size pin sits on the hand; the PNG is offset so its wrap sits on that pin. */
+.rose-pin {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 0;
+  height: 0;
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  will-change: transform;
+  z-index: 2;
+}
+.rose-bouquet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 72px;
+  height: auto;
+  max-width: none;
+  pointer-events: none;
+  /* Offset is applied by GSAP (xPercent/yPercent) so rotation cannot wipe it. */
+  filter: drop-shadow(0 8px 18px rgba(10, 24, 44, .45));
+  will-change: transform;
+}
+.rose-path {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0;
+}
 .scene--close {
   display: flex;
   align-items: center;
@@ -550,6 +609,7 @@ a { color: inherit; }
     radial-gradient(58% 46% at 50% 36%, rgba(10, 24, 44, .55), transparent 72%),
     url("img/villa-night.webp") center center / cover no-repeat,
     var(--navy);
+  z-index: 3;
 }
 .close-copy { transform: translateY(-8vh); }
 .close-mono { width: 112px; height: 112px; margin: 0 auto 18px; color: var(--gold); filter: drop-shadow(0 6px 14px rgba(10, 24, 44, .55)); }
@@ -565,6 +625,25 @@ a { color: inherit; }
 .reduced .cap { position: static; opacity: 1; margin-top: 12px; }
 .reduced .scene--close { padding: 48px 20px; }
 .reduced .close-copy { transform: none; }
+.reduced .rose-stage {
+  position: static;
+  display: block;
+  background: none;
+  margin-top: 22px;
+}
+.reduced .rose-frame {
+  width: 100%;
+  height: auto;
+  max-width: 420px;
+  margin: 0 auto;
+  border-radius: 18px;
+  border: 1px solid var(--gold);
+  overflow: hidden;
+}
+.reduced .rose-bg { position: absolute; opacity: 0; }
+.reduced .rose-bg[data-frame="4"] { opacity: 1; }
+.reduced .rose-pin,
+.reduced .rose-path { display: none; }
 .reduced .intro-fit { position: static; height: auto; }
 .reduced .intro-heads { min-height: 0; padding: 12px 0 28px; }
 .reduced .intro-title { position: static; opacity: 1; padding: 10px 0; }
@@ -640,28 +719,8 @@ a { color: inherit; }
    6. EVENTS (5.6)
    ================================================================== */
 .timeline { position: relative; max-width: 620px; margin: 40px auto 0; text-align: left; }
-.timeline::before {
-  content: '';
-  position: absolute;
-  left: 21px; top: 8px; bottom: 8px;
-  width: 2px;
-  background: linear-gradient(var(--gold), rgba(201, 154, 69, .25));
-}
-.event { position: relative; padding-left: 62px; }
+.event { position: relative; }
 .event + .event { margin-top: 22px; }
-.event-num {
-  position: absolute;
-  left: 0; top: 18px;
-  width: 44px; height: 44px;
-  display: grid;
-  place-items: center;
-  border: 1px solid var(--gold);
-  border-radius: 50%;
-  background: var(--emerald);
-  color: var(--ivory);
-  font: 600 22px/1 var(--display);
-  box-shadow: 0 0 0 4px var(--ivory);
-}
 .event-body { padding: 22px 22px 14px; }
 .event-name { font: 600 clamp(28px, 7vw, 34px)/1.1 var(--display); }
 .event-when { display: flex; flex-wrap: wrap; gap: 2px 0; margin-top: 8px; font-weight: 500; color: var(--emerald); }
@@ -1246,11 +1305,21 @@ a { color: inherit; }
     </div>
   </section>
 
-  <!-- Chapter 6: back to Bangladesh -->
-  <section class="chapter" data-chapter="home" style="--len:320" aria-label="Back to Bangladesh">
+  <!-- Chapter 6: back to Bangladesh — rose flight replaces the journeys map -->
+  <section class="chapter" data-chapter="home" style="--len:380" aria-label="Back to Bangladesh">
     <div class="stage">
-      <div class="scene">
-        <img class="scene-img" src="img/journeys.webp" width="1600" height="900" loading="lazy" decoding="async" alt="Illustrated map of five flights from England to Dhaka">
+      <div class="rose-stage" id="rose-stage" aria-label="Nabil throws roses to Risha across the sky">
+        <div class="rose-frame" id="rose-frame">
+          <img class="rose-bg" data-frame="1" src="img/rose-hold.jpg" width="576" height="1024" decoding="async" alt="Nabil holding a bouquet of roses while leaning from an airplane, Risha waiting in Dhaka">
+          <img class="rose-bg" data-frame="2" src="img/rose-throw.jpg" width="576" height="1024" loading="lazy" decoding="async" alt="Nabil releases the roses; Risha reaches out to catch them" aria-hidden="true">
+          <img class="rose-bg" data-frame="4" src="img/rose-catch.jpg" width="576" height="1024" loading="lazy" decoding="async" alt="Risha holds the bouquet of roses Nabil threw to her" aria-hidden="true">
+          <div class="rose-pin" id="rose-pin" aria-hidden="true">
+            <img class="rose-bouquet" id="rose-bouquet" src="img/rose-bouquet.png" width="1024" height="935" alt="" draggable="false">
+          </div>
+          <svg class="rose-path" viewBox="0 0 100 100" preserveAspectRatio="none" aria-hidden="true">
+            <path id="rose-flight-path" fill="none" stroke="transparent" d="M58 29 C66 16, 72 40, 70 50 S68 55, 66 57"/>
+          </svg>
+        </div>
       </div>
       <div class="cap cap--night">
         <p class="cap-place">England to Dhaka</p>
@@ -1371,7 +1440,7 @@ a { color: inherit; }
 </div>
 
 <!-- ==================================================================
-     6. EVENTS (5.6): every function, in the order given
+     6. EVENTS (5.6)
      ================================================================== -->
 <section class="section" id="events">
   <p class="eyebrow rv">The Celebrations</p>
@@ -1379,41 +1448,10 @@ a { color: inherit; }
   <svg class="divider rv" viewBox="0 0 160 20" aria-hidden="true"><use href="#divider"/></svg>
 
   <ol class="timeline">
-    <li class="event rv" data-name="Mehndi" data-start="2026-11-25T20:00:00+06:00">
-      <span class="event-num" aria-hidden="true">1</span>
-      <div class="card event-body">
-        <h3 class="event-name">Mehndi</h3>
-        <p class="event-when"><span>25 Nov 2026</span><span>Wednesday</span><span>8:00 PM</span></p>
-        <p class="event-venue">The Slow Deck Resort</p>
-        <p class="event-dress"><span class="event-label">Dress code</span><span data-dress>champagne, Baby Pink, Sea Green, Olive</span></p>
-        <a class="link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&amp;g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D">Get Directions <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </li>
-    <li class="event rv" data-name="Haldi" data-start="2026-11-26T11:00:00+06:00">
-      <span class="event-num" aria-hidden="true">2</span>
-      <div class="card event-body">
-        <h3 class="event-name">Haldi</h3>
-        <p class="event-when"><span>26 Nov 2026</span><span>Thursday</span><span>11:00 AM</span></p>
-        <p class="event-venue">The Slow Deck Resort</p>
-        <p class="event-dress"><span class="event-label">Dress code</span><span data-dress>champagne, Baby Pink, Sea Green, Olive</span></p>
-        <a class="link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&amp;g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D">Get Directions <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </li>
     <li class="event rv" data-name="Nikah" data-start="2026-11-20T16:30:00+06:00">
-      <span class="event-num" aria-hidden="true">3</span>
       <div class="card event-body">
         <h3 class="event-name">Nikah</h3>
         <p class="event-when"><span>20 Nov 2026</span><span>Friday</span><span>4:30 PM</span></p>
-        <p class="event-venue">The Slow Deck Resort</p>
-        <p class="event-dress"><span class="event-label">Dress code</span><span data-dress>champagne, Baby Pink, Sea Green, Olive</span></p>
-        <a class="link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&amp;g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D">Get Directions <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
-      </div>
-    </li>
-    <li class="event rv" data-name="Reception" data-start="2026-12-06T19:30:00+06:00">
-      <span class="event-num" aria-hidden="true">4</span>
-      <div class="card event-body">
-        <h3 class="event-name">Reception</h3>
-        <p class="event-when"><span>6 Dec 2026</span><span>Sunday</span><span>7:30 PM</span></p>
         <p class="event-venue">The Slow Deck Resort</p>
         <p class="event-dress"><span class="event-label">Dress code</span><span data-dress>champagne, Baby Pink, Sea Green, Olive</span></p>
         <a class="link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&amp;g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D">Get Directions <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
@@ -1439,7 +1477,7 @@ a { color: inherit; }
     <button class="tile rv" type="button" aria-label="Open photo 5 of 8"><img src="img/beach-moon.webp" width="1448" height="1086" loading="lazy" decoding="async" style="object-position:42% 40%" alt="Illustration of Nabil and Risha watching the moon over the sea late at night"></button>
     <button class="tile rv" type="button" aria-label="Open photo 6 of 8"><img src="img/cafe.webp" width="1448" height="1086" loading="lazy" decoding="async" style="object-position:50% 45%" alt="Illustration of Nabil and Risha talking over coffee at Tabaq Coffee"></button>
     <button class="tile rv" type="button" aria-label="Open photo 7 of 8"><img src="img/london.webp" width="1600" height="900" loading="lazy" decoding="async" style="object-position:62% 50%" alt="Illustration of Nabil in England at night, smiling at Risha on a video call"></button>
-    <button class="tile rv" type="button" aria-label="Open photo 8 of 8"><img src="img/journeys.webp" width="1600" height="900" loading="lazy" decoding="async" style="object-position:50% 50%" alt="Illustrated map of five flights from England to Dhaka"></button>
+    <button class="tile rv" type="button" aria-label="Open photo 8 of 8"><img src="img/rose-catch.jpg" width="576" height="1024" loading="lazy" decoding="async" style="object-position:50% 45%" alt="Illustration of Risha holding roses Nabil threw to her from England to Dhaka"></button>
   </div>
 </section>
 </div>
@@ -1556,10 +1594,13 @@ a { color: inherit; }
     <path d="M16 10l4 4M20 10l-4 4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
   </svg>
 </button>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/MotionPathPlugin.min.js"></script>
 <script>
 /* ==================================================================
    SCRIPT
-   No libraries. One passive scroll listener feeds one animation
+   Scroll story is library-free. The rose flight scene uses GSAP +
+   MotionPathPlugin. One passive scroll listener feeds one animation
    frame; scroll-driven work only writes transform and opacity.
    ================================================================== */
 (function () {
@@ -1591,6 +1632,7 @@ a { color: inherit; }
 
   var page = $('#page');
   var veil = $('#veil');
+  var scrubRoseFlight = null;
 
   /* ==================================================================
      1. OPENING REVEAL (5.1)
@@ -1715,7 +1757,9 @@ a { color: inherit; }
               z                slow zoom-out amount
               k                under 1 lets tall phones see more of the
                                picture, letterboxed over a soft backdrop
-       cap    in / out         when the caption card shows
+       cap    in / out         when the caption card shows.
+                           The card stays put while its frame is held,
+                           then fades out before the next frame arrives.
      ================================================================== */
   var BEACH = { pan: [[0, 0.47]], y: 0.42, z: 0.05, k: 0.66 };
   var STORY = {
@@ -1745,10 +1789,9 @@ a { color: inherit; }
     },
     home: {
       scenes: [
-        { pan: [[0.08, 0.19], [0.46, 0.80], [0.54, 0.80], [0.70, 0.47]], y: 0.50, z: 0.04 },
-        { in: [0.80, 0.93] }
+        { in: [0.84, 0.94] }
       ],
-      caps: [{ out: [0.38, 0.46] }, { in: [0.50, 0.58], out: [0.74, 0.80] }]
+      caps: [{ out: [0.22, 0.30] }, { in: [0.36, 0.46], out: [0.74, 0.82] }]
     }
   };
 
@@ -1826,12 +1869,19 @@ a { color: inherit; }
     }
     for (i = 0; i < ch.caps.length; i += 1) {
       var cap = ch.caps[i];
-      var shown = cap.cfg.in ? ramp(p, cap.cfg.in[0], cap.cfg.in[1]) : 1;
+      /* Stay invisible while the picture is still sliding into place,
+         then appear once that frame is held. */
+      var shown = cap.cfg.in ? ramp(p, cap.cfg.in[0], cap.cfg.in[1]) : ramp(p, 0.03, 0.09);
       var gone = cap.cfg.out ? ramp(p, cap.cfg.out[0], cap.cfg.out[1]) : 0;
+      /* Dissolve the last card before the stage unpins, so it fades
+         away instead of scrolling off with the picture. */
+      if (i === ch.caps.length - 1) gone = Math.max(gone, ramp(p, 0.92, 0.98));
       fade(cap.el, shown * (1 - gone));
-      move(cap.el, 0, (1 - shown) * 16 - gone * 12);
     }
     if (ch.stars) fade(ch.stars, ramp(p, ch.cfg.stars[0], ch.cfg.stars[1]));
+    if (ch.el.dataset.chapter === 'home' && typeof scrubRoseFlight === 'function') {
+      scrubRoseFlight(p);
+    }
   }
 
   /* ----- chapter 1: Risha rises in alone, moves aside for Nabil,
@@ -2656,6 +2706,206 @@ a { color: inherit; }
     }, { threshold: 0.12, rootMargin: '0px 0px -5% 0px' });
     items.forEach(function (el) { watcher.observe(el); });
   }
+
+  /* ==================================================================
+     ROSE FLIGHT (chapter 6)
+     A zero-size pin sits on the hand; the PNG is CSS-offset from that pin
+     so MotionPath never drifts the grip point.
+     Remeasured on the replacement frames:
+       Nabil palm (0.58, 0.29) · Risha hands (0.66, 0.57)
+     ================================================================== */
+  (function initRoseFlight() {
+    var stage = $('#rose-stage');
+    var frame = $('#rose-frame');
+    var pin = $('#rose-pin');
+    var bouquet = $('#rose-bouquet');
+    var pathEl = $('#rose-flight-path');
+    if (!stage || !frame || !pin || !bouquet || !pathEl) return;
+
+    var frame1 = $('.rose-bg[data-frame="1"]', frame);
+    var frame2 = $('.rose-bg[data-frame="2"]', frame);
+    var frame4 = $('.rose-bg[data-frame="4"]', frame);
+    var START = { x: 0.58, y: 0.29 };
+    var CATCH = { x: 0.66, y: 0.57 };
+    var tl = null;
+    var lastP = -1;
+
+    function showFinalStill() {
+      if (frame1) { frame1.style.opacity = '0'; frame1.setAttribute('aria-hidden', 'true'); }
+      if (frame2) { frame2.style.opacity = '0'; frame2.setAttribute('aria-hidden', 'true'); }
+      if (frame4) { frame4.style.opacity = '1'; frame4.removeAttribute('aria-hidden'); }
+      pin.style.opacity = '0';
+      pin.style.visibility = 'hidden';
+    }
+
+    if (REDUCED || typeof gsap === 'undefined' || typeof MotionPathPlugin === 'undefined') {
+      showFinalStill();
+      scrubRoseFlight = function () {};
+      return;
+    }
+
+    gsap.registerPlugin(MotionPathPlugin);
+
+    function setPath() {
+      var sx = START.x * 100;
+      var sy = START.y * 100;
+      var ex = CATCH.x * 100;
+      var ey = CATCH.y * 100;
+      pathEl.setAttribute(
+        'd',
+        'M' + sx.toFixed(2) + ' ' + sy.toFixed(2) +
+        ' C' + (sx + 8).toFixed(2) + ' ' + (sy - 12).toFixed(2) + ',' +
+        (ex + 10).toFixed(2) + ' ' + (sy + 10).toFixed(2) + ',' +
+        (ex + 4).toFixed(2) + ' ' + ((sy + ey) * 0.5).toFixed(2) +
+        ' S' + (ex + 1).toFixed(2) + ' ' + (ey - 4).toFixed(2) + ',' +
+        ex.toFixed(2) + ' ' + ey.toFixed(2)
+      );
+    }
+
+    function px(point) {
+      return { x: point.x * frame.clientWidth, y: point.y * frame.clientHeight };
+    }
+
+    function sizeBouquet() {
+      /* ~13% of frame width — closer to the drawn bouquet scale */
+      bouquet.style.width = Math.round(frame.clientWidth * 0.13) + 'px';
+    }
+
+    function syncAria(active) {
+      [frame1, frame2, frame4].forEach(function (img) {
+        if (!img) return;
+        img.setAttribute('aria-hidden', img === active ? 'false' : 'true');
+      });
+    }
+
+    function buildTimeline() {
+      if (!frame.clientWidth || !frame.clientHeight) return;
+      sizeBouquet();
+      setPath();
+      var start = px(START);
+      var catchPt = px(CATCH);
+      var mid = {
+        x: (start.x + catchPt.x) * 0.5 + frame.clientWidth * 0.06,
+        y: Math.min(start.y, catchPt.y) - frame.clientHeight * 0.06
+      };
+      var progress = tl ? tl.progress() : 0;
+
+      if (tl) tl.kill();
+      gsap.set([frame2, frame4], { autoAlpha: 0 });
+      gsap.set(frame1, { autoAlpha: 1 });
+      /* Pin = exact palm point. Bouquet keeps a stable grip offset via xPercent/yPercent. */
+      gsap.set(pin, { x: start.x, y: start.y, autoAlpha: 0, rotation: 0 });
+      gsap.set(bouquet, {
+        xPercent: -48,
+        yPercent: -78,
+        rotation: -12,
+        scale: 1,
+        transformOrigin: '48% 78%'
+      });
+      syncAria(frame1);
+
+      tl = gsap.timeline({ paused: true, defaults: { ease: 'none' } });
+
+      tl.addLabel('hold', 0)
+        .to({}, { duration: 0.9 })
+        .addLabel('throw')
+        .set(pin, { x: start.x, y: start.y }, 'throw')
+        .set(bouquet, { xPercent: -48, yPercent: -78, rotation: -12, scale: 1 }, 'throw')
+        /* Appear in Nabil's hand as we switch to the empty-hand frame. */
+        .to(pin, { autoAlpha: 1, duration: 0.18, ease: 'power1.out' }, 'throw')
+        .to(frame1, { autoAlpha: 0, duration: 0.5, ease: 'power1.inOut' }, 'throw')
+        .to(frame2, {
+          autoAlpha: 1,
+          duration: 0.5,
+          ease: 'power1.inOut',
+          onUpdate: function () {
+            if (this.progress() > 0.4) syncAria(frame2);
+          }
+        }, 'throw')
+        .to({}, { duration: 0.2 })
+        .addLabel('flight')
+        .to(pin, {
+          duration: 3.0,
+          ease: 'power1.inOut',
+          motionPath: {
+            path: [start, mid, catchPt],
+            curviness: 1.35,
+            autoRotate: false
+          }
+        }, 'flight')
+        .to(bouquet, {
+          xPercent: -48,
+          yPercent: -78,
+          rotation: 22,
+          scale: 1.06,
+          duration: 3.0,
+          ease: 'power1.inOut'
+        }, 'flight')
+        .addLabel('catch')
+        .to(pin, {
+          x: catchPt.x,
+          y: catchPt.y + frame.clientHeight * 0.006,
+          duration: 0.2,
+          ease: 'power1.in'
+        }, 'catch')
+        .to(bouquet, {
+          xPercent: -48,
+          yPercent: -78,
+          scale: 1.02,
+          rotation: 8,
+          duration: 0.2,
+          ease: 'power1.in'
+        }, 'catch')
+        .to(pin, {
+          x: catchPt.x,
+          y: catchPt.y,
+          duration: 0.32,
+          ease: 'power2.out'
+        })
+        .to(bouquet, {
+          xPercent: -48,
+          yPercent: -78,
+          scale: 1,
+          rotation: 4,
+          duration: 0.32,
+          ease: 'power2.out'
+        }, '<')
+        .addLabel('settle')
+        /* Hand off to the final illustration — no lingering floating PNG. */
+        .to(frame2, { autoAlpha: 0, duration: 0.55, ease: 'power1.inOut' }, 'settle')
+        .to(frame4, {
+          autoAlpha: 1,
+          duration: 0.55,
+          ease: 'power1.inOut',
+          onUpdate: function () {
+            if (this.progress() > 0.35) syncAria(frame4);
+          }
+        }, 'settle')
+        .to(pin, { autoAlpha: 0, duration: 0.35, ease: 'power1.out' }, 'settle+=0.12');
+
+      tl.progress(progress);
+    }
+
+    scrubRoseFlight = function (p) {
+      if (!tl) buildTimeline();
+      if (!tl) return;
+      var t = clamp01((p - 0.04) / 0.72);
+      if (Math.abs(t - lastP) < 0.0008) return;
+      lastP = t;
+      tl.progress(t);
+    };
+
+    var resizeTimer = 0;
+    window.addEventListener('resize', function () {
+      clearTimeout(resizeTimer);
+      resizeTimer = setTimeout(function () {
+        buildTimeline();
+        if (lastP >= 0) tl.progress(lastP);
+      }, 120);
+    });
+
+    buildTimeline();
+  })();
 
   /* ---------- start ---------- */
   refresh();
