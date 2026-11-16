@@ -1442,7 +1442,6 @@ a { color: inherit; }
         <h3 class="event-name">Nikah</h3>
         <p class="event-when"><span>20 Nov 2026</span><span>Friday</span><span>4:30 PM</span></p>
         <p class="event-venue">The Slow Deck Resort</p>
-        <p class="event-dress"><span class="event-label">Dress code</span><span data-dress>champagne, Baby Pink, Sea Green, Olive</span></p>
         <a class="link" target="_blank" rel="noopener noreferrer" href="https://www.google.com/maps/place/The+Slow+Deck+Resort/@23.4567137,90.3792402,17z/data=!3m1!4b1!4m6!3m5!1s0x3755a70064553269:0xb52dc58089f8f3c0!8m2!3d23.4567088!4d90.3818151!16s%2Fg%2F11y4qw675d?entry=ttu&amp;g_ep=EgoyMDI2MTEwMy4wIKXMDSoASAFQAw%3D%3D">Get Directions <svg viewBox="0 0 24 24" aria-hidden="true"><use href="#i-arrow"/></svg></a>
       </div>
     </li>
@@ -2164,7 +2163,6 @@ a { color: inherit; }
     $$('.event').forEach(function (item, index) {
       var name = item.dataset.name;
       var venue = $('.event-venue', item).textContent.trim();
-      var dress = $('[data-dress]', item).textContent.trim();
       var link = $('a', item).href;
       lines.push(
         'BEGIN:VEVENT',
@@ -2173,7 +2171,7 @@ a { color: inherit; }
         'DTSTART:' + icsStamp(new Date(item.dataset.start)),
         'SUMMARY:' + icsText(name + ' · Nabil & Risha'),
         'LOCATION:' + icsText(venue + ', ' + address),
-        'DESCRIPTION:' + icsText('Dress code: ' + dress + '\nDirections: ' + link),
+        'DESCRIPTION:' + icsText('Directions: ' + link),
         'URL:' + link,
         'END:VEVENT'
       );
